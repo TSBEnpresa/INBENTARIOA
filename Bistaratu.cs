@@ -59,7 +59,7 @@ namespace TSB_Inbentarioa
 
             //Bukaera data reseteatu
             BukaeraData.ResetText();
-
+            
             //Datuen aukera (Combo box) reseteatu
             DatuZehatza_CB.SelectedItem = null;
 
