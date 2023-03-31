@@ -51,7 +51,7 @@ namespace TSB_Inbentarioa
             //Gailua aukera (Combo box) reseteatu
             Gailua_CB.SelectedItem = null;
 
-            //Atributuen aukera (Combo box) reseteatu tu puta madre github
+            //Atributuen aukera (Combo box) reseteatu tu prima en tanga
             Atributuak_CB.SelectedItem = null;
 
             //Hasiera data reseteatu
