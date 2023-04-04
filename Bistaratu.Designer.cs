@@ -86,13 +86,6 @@
             this.Gailua_CB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Gailua_CB.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Gailua_CB.FormattingEnabled = true;
-            this.Gailua_CB.Items.AddRange(new object[] {
-            "Inprimagailuak",
-            "Mahaigainekoak",
-            "Mobilak",
-            "Monitoreak",
-            "Portatilak",
-            "Telebistak"});
             this.Gailua_CB.Location = new System.Drawing.Point(16, 151);
             this.Gailua_CB.Margin = new System.Windows.Forms.Padding(4);
             this.Gailua_CB.Name = "Gailua_CB";
@@ -136,6 +129,7 @@
             this.DatuZehatza_CB.Name = "DatuZehatza_CB";
             this.DatuZehatza_CB.Size = new System.Drawing.Size(175, 36);
             this.DatuZehatza_CB.TabIndex = 7;
+            this.DatuZehatza_CB.SelectedIndexChanged += new System.EventHandler(this.DatuZehatza_CB_SelectedIndexChanged);
             // 
             // HasieraData
             // 

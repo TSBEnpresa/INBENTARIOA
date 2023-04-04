@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TSB_Inbentarioa
 {
@@ -45,6 +48,8 @@ namespace TSB_Inbentarioa
             {
                 pictureBox1.Visible = false;
             }
+
+            TaulaIzenakLortu();
 
         }
 
@@ -88,10 +93,6 @@ namespace TSB_Inbentarioa
             }
 
 
-            //Datu basera konexioa izateko.
-            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
-            MySqlConnection connection = new MySqlConnection(connectionString);
-
             //Zein taula aukeratu dugun jakiteko.
             string taulaIzena;
 
@@ -99,46 +100,46 @@ namespace TSB_Inbentarioa
             {
             
                 
-                case "Inprimagailuak":
+                case "inprimagailuak":
 
                     //Inprimagailuak aukeratzerakoan beteko diren datuak
-                    taulaIzena = "Inprimagailuak";
-                    ColumnakLortu(taulaIzena, connection);
+                    taulaIzena = "inprimagailuak";
+                    ColumnakLortu(taulaIzena);
 
                     break;
-                case "Mahaigainekoak":
+                case "mahaigainekoak":
 
                     //Mahaigainekoak aukeratzerakoan beteko diren datuak.
-                    taulaIzena = "Mahaigainekoak";
-                    ColumnakLortu(taulaIzena, connection);
+                    taulaIzena = "mahaigainekoak";
+                    ColumnakLortu(taulaIzena);
 
                     break;
-                case "Mobilak":
+                case "mobilak":
 
                     //Mobilak aukeratzerakoan beteko diren datuak.
-                    taulaIzena = "Mobilak";
-                    ColumnakLortu(taulaIzena, connection);
+                    taulaIzena = "mobilak";
+                    ColumnakLortu(taulaIzena);
 
                     break;
-                case "Monitoreak":
+                case "monitoreak":
 
                     //Monitoreak aukeratzerakoan beteko diren datuak.
-                    taulaIzena = "Monitoreak";
-                    ColumnakLortu(taulaIzena, connection);
+                    taulaIzena = "monitoreak";
+                    ColumnakLortu(taulaIzena);
 
                     break;
-                case "Portatilak":
+                case "portatilak":
 
                     //Portatilak aukeratzerakoan beteko diren datuak.
-                    taulaIzena = "Portatilak";
-                    ColumnakLortu(taulaIzena, connection);
+                    taulaIzena = "portatilak";
+                    ColumnakLortu(taulaIzena);
 
                     break;
-                case "Telebistak":
+                case "telebistak":
 
                     //Telebistak aukeratzerakoan beteko diren datuak.
-                    taulaIzena = "Telebistak";
-                    ColumnakLortu(taulaIzena, connection);
+                    taulaIzena = "telebistak";
+                    ColumnakLortu(taulaIzena);
 
                     break;
 
@@ -146,11 +147,70 @@ namespace TSB_Inbentarioa
 
         }
 
-        private void ColumnakLortu(string taulaIzena, MySqlConnection connection)
+        private void TaulaIzenakLortu()
+        {
+            //Datu basera konexioa izateko | Connect to the database using a connection string.
+            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            try
+            {
+                //Konexioa ireki | Connect to the database
+                connection.Open();
+            }
+            catch
+            {
+                //Show an error message if the connection could not be established.
+                MessageBox.Show("Ezin izan da konexioa ezarri, mesedez jarri kontaktuan mantenukoarekin.");
+            }
+
+            // Kontsulta bat sortu datu-baseko taula-izenak lortzeko | Open the connection to the database.
+            string query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA='tsb_datubasea'";
+
+            // Kontsulta exekutatzeko komando bat sortzea | Create a command to execute the query.
+            MySqlCommand command = new MySqlCommand(query, connection);
+
+            // Kontsulta exekutatu eta taularen izenak lortu | Execute the query and retrieve the table names
+            MySqlDataReader reader = command.ExecuteReader();
+            List<string> tableNames = new List<string>();
+            while (reader.Read())
+            {
+            
+                tableNames.Add(reader.GetString(0));
+
+            }
+
+            // Itxi MySqlDataReader objektua eta askatu baliabideak |
+            // Close the MySqlDataReader object and free up resources.
+            reader.Close();
+
+            // Add the retrieved table names to the ComboBox control.
+            Gailua_CB.Items.AddRange(tableNames.ToArray());
+
+            //Taulak borratzeko.
+            try
+            {
+                Gailua_CB.Items.Remove("eraikintaula");
+                Gailua_CB.Items.Remove("mintegitaula");
+            }
+            catch { }
+
+            // Konexioa itxi eta baliabideak askatu |
+            // Close the connection to the database and free up resources.
+            connection.Close();
+
+        }
+
+        private void ColumnakLortu(string taulaIzena)
         {
 
-            //Aukera aldatzen dugun bakoitzean kolumnak garbitzeko.
+            //Aukera aldatzen dugun bakoitzean kolumnak garbitzeko |
+            //Everytime we change the column, it clears.
             kolumnak_CB.Items.Clear();
+
+            //Datu basera konexioa izateko.
+            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
 
             try
             {
@@ -168,29 +228,18 @@ namespace TSB_Inbentarioa
             //Kontsulta bat sortu | Create a query
             string query = $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{taulaIzena}'";
 
-            //Kontsulta exekutatzeko | execute query
+            //Kontsulta exekutatzeko | Execute query
             MySqlCommand command = new MySqlCommand(query, connection);
 
-            //Exekutatu kolumna izenak lortzeko | Get colum names
+            //Exekutatu kolumna izenak lortzeko | Get column names
             MySqlDataReader reader = command.ExecuteReader();
 
-            //Kolumnak gordetzeko lista | A list to save the colum names
+            //Kolumnak gordetzeko lista | A list to save the column names
             List<string> columns = new List<string>();
 
             while (reader.Read()) {
 
-                if (reader.Read().Equals("deskribapen_orokorra")) { 
-                
-                    //Ezerre ez du egingo, ze ez dugu nahi, deskribapena azaltzea filtroan.
-                    //
-                
-                } else {
-
-                    columns.Add(reader.GetString(0));
-
-                }
-            
-                
+                columns.Add(reader.GetString(0));
 
             }
 
@@ -200,9 +249,39 @@ namespace TSB_Inbentarioa
 
             //Gailuaren combo box-a bete | Add the name of the colums to the combobox.
             kolumnak_CB.Items.AddRange(columns.ToArray());
+            kolumnak_CB.Items.Remove("deskribapen_orokorra");
 
         }
 
+        private void DatuZehatza_CB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            //Datu basera konexioa izateko | Connect to the database using a connection string.
+            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            try
+            {
+                //Konexioa ireki | Connect to the database
+                connection.Open();
+            }
+            catch
+            {
+                //Show an error message if the connection could not be established.
+                MessageBox.Show("Ezin izan da konexioa ezarri, mesedez jarri kontaktuan mantenukoarekin.");
+            }
+
+            //Depende ze aukeratzeken, hori irakutzikoik kolumnak_CB.SelectedItem
+            KolumnaDatuakLortzen();
+
+        }
+
+        private void KolumnaDatuakLortzen()
+        {
+
+            //biharko
+
+        }
 
         private void Kolumnak_CB_SelectedIndexChanged(object sender, EventArgs e)
         {
