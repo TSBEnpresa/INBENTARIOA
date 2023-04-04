@@ -34,7 +34,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Gailua_CB = new System.Windows.Forms.ComboBox();
             this.Reset_BT = new System.Windows.Forms.Button();
-            this.Atributuak_CB = new System.Windows.Forms.ComboBox();
+            this.kolumnak_CB = new System.Windows.Forms.ComboBox();
             this.DatuZehatza_CB = new System.Windows.Forms.ComboBox();
             this.HasieraData = new System.Windows.Forms.DateTimePicker();
             this.BukaeraData = new System.Windows.Forms.DateTimePicker();
@@ -63,7 +63,7 @@
             // 
             this.Bidali_BT.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Bidali_BT.Location = new System.Drawing.Point(303, 73);
-            this.Bidali_BT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bidali_BT.Margin = new System.Windows.Forms.Padding(4);
             this.Bidali_BT.Name = "Bidali_BT";
             this.Bidali_BT.Size = new System.Drawing.Size(200, 46);
             this.Bidali_BT.TabIndex = 1;
@@ -75,7 +75,7 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(16, 302);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(560, 233);
@@ -87,14 +87,14 @@
             this.Gailua_CB.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Gailua_CB.FormattingEnabled = true;
             this.Gailua_CB.Items.AddRange(new object[] {
-            "Portatilak",
-            "Monitoreak",
-            "Sobremesa",
-            "Telebistak",
+            "Inprimagailuak",
+            "Mahaigainekoak",
             "Mobilak",
-            "Inprimagailuak"});
+            "Monitoreak",
+            "Portatilak",
+            "Telebistak"});
             this.Gailua_CB.Location = new System.Drawing.Point(16, 151);
-            this.Gailua_CB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Gailua_CB.Margin = new System.Windows.Forms.Padding(4);
             this.Gailua_CB.Name = "Gailua_CB";
             this.Gailua_CB.Size = new System.Drawing.Size(175, 36);
             this.Gailua_CB.TabIndex = 4;
@@ -104,7 +104,7 @@
             // 
             this.Reset_BT.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Reset_BT.Location = new System.Drawing.Point(89, 73);
-            this.Reset_BT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Reset_BT.Margin = new System.Windows.Forms.Padding(4);
             this.Reset_BT.Name = "Reset_BT";
             this.Reset_BT.Size = new System.Drawing.Size(200, 46);
             this.Reset_BT.TabIndex = 5;
@@ -112,21 +112,18 @@
             this.Reset_BT.UseVisualStyleBackColor = true;
             this.Reset_BT.Click += new System.EventHandler(this.Reset_BT_Click);
             // 
-            // Atributuak_CB
+            // kolumnak_CB
             // 
-            this.Atributuak_CB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Atributuak_CB.Enabled = false;
-            this.Atributuak_CB.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Atributuak_CB.FormattingEnabled = true;
-            this.Atributuak_CB.Items.AddRange(new object[] {
-            "Izena",
-            "EskaeraData"});
-            this.Atributuak_CB.Location = new System.Drawing.Point(209, 151);
-            this.Atributuak_CB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Atributuak_CB.Name = "Atributuak_CB";
-            this.Atributuak_CB.Size = new System.Drawing.Size(175, 36);
-            this.Atributuak_CB.TabIndex = 6;
-            this.Atributuak_CB.SelectedIndexChanged += new System.EventHandler(this.Atributuak_CB_SelectedIndexChanged);
+            this.kolumnak_CB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.kolumnak_CB.Enabled = false;
+            this.kolumnak_CB.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kolumnak_CB.FormattingEnabled = true;
+            this.kolumnak_CB.Location = new System.Drawing.Point(209, 151);
+            this.kolumnak_CB.Margin = new System.Windows.Forms.Padding(4);
+            this.kolumnak_CB.Name = "kolumnak_CB";
+            this.kolumnak_CB.Size = new System.Drawing.Size(175, 36);
+            this.kolumnak_CB.TabIndex = 6;
+            this.kolumnak_CB.SelectedIndexChanged += new System.EventHandler(this.Kolumnak_CB_SelectedIndexChanged);
             // 
             // DatuZehatza_CB
             // 
@@ -134,15 +131,8 @@
             this.DatuZehatza_CB.Enabled = false;
             this.DatuZehatza_CB.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DatuZehatza_CB.FormattingEnabled = true;
-            this.DatuZehatza_CB.Items.AddRange(new object[] {
-            "Portatilak",
-            "Monitoreak",
-            "Sobremesa",
-            "Telebistak",
-            "Mobilak",
-            "Inprimagailuak"});
             this.DatuZehatza_CB.Location = new System.Drawing.Point(400, 151);
-            this.DatuZehatza_CB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DatuZehatza_CB.Margin = new System.Windows.Forms.Padding(4);
             this.DatuZehatza_CB.Name = "DatuZehatza_CB";
             this.DatuZehatza_CB.Size = new System.Drawing.Size(175, 36);
             this.DatuZehatza_CB.TabIndex = 7;
@@ -152,7 +142,7 @@
             this.HasieraData.CalendarFont = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HasieraData.Enabled = false;
             this.HasieraData.Location = new System.Drawing.Point(89, 223);
-            this.HasieraData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HasieraData.Margin = new System.Windows.Forms.Padding(4);
             this.HasieraData.Name = "HasieraData";
             this.HasieraData.Size = new System.Drawing.Size(199, 22);
             this.HasieraData.TabIndex = 8;
@@ -162,7 +152,7 @@
             this.BukaeraData.CalendarFont = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BukaeraData.Enabled = false;
             this.BukaeraData.Location = new System.Drawing.Point(303, 223);
-            this.BukaeraData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BukaeraData.Margin = new System.Windows.Forms.Padding(4);
             this.BukaeraData.Name = "BukaeraData";
             this.BukaeraData.Size = new System.Drawing.Size(199, 22);
             this.BukaeraData.TabIndex = 9;
@@ -171,7 +161,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(16, 16);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(48, 42);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -251,7 +241,7 @@
             this.Controls.Add(this.BukaeraData);
             this.Controls.Add(this.HasieraData);
             this.Controls.Add(this.DatuZehatza_CB);
-            this.Controls.Add(this.Atributuak_CB);
+            this.Controls.Add(this.kolumnak_CB);
             this.Controls.Add(this.Reset_BT);
             this.Controls.Add(this.Gailua_CB);
             this.Controls.Add(this.dataGridView1);
@@ -259,7 +249,7 @@
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(609, 594);
             this.MinimizeBox = false;
@@ -282,7 +272,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox Gailua_CB;
         private System.Windows.Forms.Button Reset_BT;
-        private System.Windows.Forms.ComboBox Atributuak_CB;
+        private System.Windows.Forms.ComboBox kolumnak_CB;
         private System.Windows.Forms.ComboBox DatuZehatza_CB;
         private System.Windows.Forms.DateTimePicker HasieraData;
         private System.Windows.Forms.DateTimePicker BukaeraData;
