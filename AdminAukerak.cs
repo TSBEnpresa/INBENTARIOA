@@ -60,6 +60,7 @@ namespace TSB_Inbentarioa
 
         }
 
+        //Bistaratu botoiari sakatzerakoan exekutatuko dena.
         private void Bistaratu_BT_Click(object sender, EventArgs e)
         {
             bool admin = true;
