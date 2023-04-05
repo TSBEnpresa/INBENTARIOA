@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -71,6 +72,9 @@ namespace TSB_Inbentarioa
             BukaeraData.ResetText();
             
             //Datuen aukera (Combo box) reseteatu
+            DatuZehatza_CB.SelectedItem = null;
+
+            //Hurrengo funtziora sartu aurretik barruko datuak kenduko ditugu, baspada ere.
             DatuZehatza_CB.SelectedItem = null;
 
         }
@@ -256,30 +260,7 @@ namespace TSB_Inbentarioa
         private void DatuZehatza_CB_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            //Datu basera konexioa izateko | Connect to the database using a connection string.
-            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
-            MySqlConnection connection = new MySqlConnection(connectionString);
-
-            try
-            {
-                //Konexioa ireki | Connect to the database
-                connection.Open();
-            }
-            catch
-            {
-                //Show an error message if the connection could not be established.
-                MessageBox.Show("Ezin izan da konexioa ezarri, mesedez jarri kontaktuan mantenukoarekin.");
-            }
-
-            //Depende ze aukeratzeken, hori irakutzikoik kolumnak_CB.SelectedItem
-            KolumnaDatuakLortzen();
-
-        }
-
-        private void KolumnaDatuakLortzen()
-        {
-
-            //biharko
+            
 
         }
 
@@ -322,6 +303,117 @@ namespace TSB_Inbentarioa
                 DatuZehatza_CB.Enabled = false;
             }
 
+            //Hurrengo funtziora sartu aurretik barruko datuak kenduko ditugu, baspada ere.
+            DatuZehatza_CB.Items.Clear();
+
+            //Depende ze aukeratzeken, hori irakutzikoik kolumnak_CB.SelectedItem
+            KolumnaDatuakLortzen();
+
+
+        }
+
+        private void KolumnaDatuakLortzen()
+        {
+
+
+            //Datu basera konexioa izateko | Connect to the database using a connection string.
+            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            try
+            {
+                //Konexioa ireki | Connect to the database
+                connection.Open();
+            }
+            catch
+            {
+                //Show an error message if the connection could not be westablished.
+                MessageBox.Show("Ezin izan da konexioa ezarri, mesedez jarri kontaktuan mantenukoarekin.");
+            }
+
+            //Datuak lortzeko | obtain data
+            string gailua = Gailua_CB.SelectedItem.ToString();
+            string kolumna = kolumnak_CB.SelectedItem.ToString();
+
+            //Select kontsulta egiteko | Select to do the query
+            string selectQuery = "SELECT " + kolumna + " FROM " + gailua;
+
+            MySqlCommand command = new MySqlCommand(selectQuery, connection);
+
+            //Close connection
+            connection.Close();
+
+            //Irakurri eskatutako datuak.
+            MySqlDataReader reader = command.ExecuteReader();
+
+            //Datuak sartzeko | enter data
+            while (reader.Read())
+            {
+
+                try
+                {
+                    string datuak = "";
+
+                    if (kolumna == "id_mintegia")
+                    {
+
+                        //Mintegiaren izena lortzeko.
+                        datuak = MintegiIzenaLortu(connection, reader[kolumna].ToString());
+
+
+                    }
+                    else
+                    {
+
+                        //Sartu beharreko datua.
+                        datuak = reader[kolumna].ToString();
+
+                    }
+
+
+                    //Combox-a bete, barruko datuak irakusteko.
+                    DatuZehatza_CB.Items.Add(datuak);
+
+                }
+                catch
+                {
+
+                    //Errorea ematen badu.
+                    MessageBox.Show("Datu basetik datuak lortzeko garaian, errorea eman du, mesedez jarri mantenuarekin kontaktuan.");
+
+                }
+            }
+
+
+        }
+
+        private string MintegiIzenaLortu(MySqlConnection connection, string id_mintegia)
+        {
+            //Start connection | Konexioa hasi
+            connection.Open();
+
+            //Mintegi select-a | Select Mintegia
+            string selectMintegia = "SELECT izena FROM mintegitaula WHERE id_mintegia = " + id_mintegia;
+
+            string mintegiIzena = "";
+
+            //Mintegi izena lortzeko.
+            MySqlCommand command = new MySqlCommand(selectMintegia, connection);
+
+            //Sarrerak irakurtzeko / Datuak irakurtzeko
+            MySqlDataReader reader = command.ExecuteReader();
+
+            while(reader.Read()) { 
+
+                mintegiIzena = reader["izena"].ToString();
+
+            }
+
+            //Bukatutakoan konexioa itxiko dugu | Close connection.
+            connection.Close();
+
+            //Return the date | Datuak bueltatu
+            return mintegiIzena;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
