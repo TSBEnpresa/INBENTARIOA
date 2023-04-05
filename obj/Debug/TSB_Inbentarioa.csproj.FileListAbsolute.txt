@@ -62,3 +62,39 @@ D:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Progra
 D:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\System.Numerics.Vectors.xml
 D:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.csproj.CopyComplete
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\TSB_Inbentarioa.exe.config
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\TSB_Inbentarioa.exe
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\TSB_Inbentarioa.pdb
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\Google.Protobuf.dll
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\MySql.Data.dll
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\System.Buffers.dll
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\System.Memory.dll
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\Google.Protobuf.pdb
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\Google.Protobuf.xml
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\MySql.Data.xml
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\System.Buffers.xml
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\System.Memory.xml
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.csproj.AssemblyReference.cache
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.csproj.SuggestedBindingRedirects.cache
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.AdminAukerak.resources
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.Bistaratu.resources
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.Hasiera_Form.resources
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.Kredituak.resources
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.Properties.Resources.resources
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.csproj.GenerateResource.cache
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.csproj.CoreCompileInputs.cache
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.csproj.CopyComplete
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.exe
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.pdb

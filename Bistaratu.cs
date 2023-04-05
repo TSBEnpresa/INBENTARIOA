@@ -51,42 +51,48 @@ namespace TSB_Inbentarioa
             }
 
             TaulaIzenakLortu();
+            
 
         }
 
         private void Reset_BT_Click(object sender, EventArgs e)
         {
-            //Lehioaren tamaina berriz bere lekura bueltatu.
+            //Lehioaren tamaina berriz bere lekura bueltatu | Returns the initial size of the window
             Size = new Size(459, 280);
 
-            //Gailua aukera (Combo box) reseteatu
+            //Gailua aukera (Combo box) reseteatu | It reset to null the Gailua combo box
             Gailua_CB.SelectedItem = null;
 
-            //Atributuen aukera (Combo box) reseteatu
-            kolumnak_CB.SelectedItem = null;
+            //Atributuen aukera (Combo box) reseteatu | It clears the kolumnak combo box
+            kolumnak_CB.Items.Clear();
 
-            //Hasiera data reseteatu
+            //Hasiera data reseteatu | It reset to null the HasieraData
             HasieraData.ResetText();
 
-            //Bukaera data reseteatu
+            //Bukaera data reseteatu | It reset to null the BukaeraData
             BukaeraData.ResetText();
+
+            //Datuen aukera (Combo box) reseteatu | It reset to null the DatuZehatza combo box
+            DatuZehatza_CB.SelectedItem = null;
+
+            //Datuen aukera desabilitatu egiten du | It disable the DatuZehatza combo box
+            DatuZehatza_CB.Enabled = false;
             
-            //Datuen aukera (Combo box) reseteatu
-            DatuZehatza_CB.SelectedItem = null;
-
-            //Hurrengo funtziora sartu aurretik barruko datuak kenduko ditugu, baspada ere.
-            DatuZehatza_CB.SelectedItem = null;
-
+            //Bistaratze lehioa garbitu egiten du | It cleans the datagridview window
+            dataGridView1.DataSource = null;
         }
 
         private void Bidali_BT_Click(object sender, EventArgs e)
         {
             Size = new Size(459, 483);
+
+            DatuakBistaratu();
         }
 
         private void Gailua_CB_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Gailuren bat, aukeratzerakoan, hurrengo combobox-a aktibatuko den edo ez, esaten diogu.
+            //When we select the Gailu combo box, the next one will be available, if we dont select any gailu it will be disabled
             if (Gailua_CB.SelectedItem != null)
             {
                 kolumnak_CB.Enabled = true;
@@ -97,7 +103,7 @@ namespace TSB_Inbentarioa
             }
 
 
-            //Zein taula aukeratu dugun jakiteko.
+            //Zein taula aukeratu dugun jakiteko. | Here we select the table that we want.
             string taulaIzena;
 
             switch (Gailua_CB.SelectedItem)
@@ -106,42 +112,42 @@ namespace TSB_Inbentarioa
                 
                 case "inprimagailuak":
 
-                    //Inprimagailuak aukeratzerakoan beteko diren datuak
+                    //Inprimagailuak aukeratzerakoan beteko diren datuak | The information that it will be filled when we select inprimagailuak
                     taulaIzena = "inprimagailuak";
                     ColumnakLortu(taulaIzena);
 
                     break;
                 case "mahaigainekoak":
 
-                    //Mahaigainekoak aukeratzerakoan beteko diren datuak.
+                    //Mahaigainekoak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select mahaiganekoak
                     taulaIzena = "mahaigainekoak";
                     ColumnakLortu(taulaIzena);
 
                     break;
                 case "mobilak":
 
-                    //Mobilak aukeratzerakoan beteko diren datuak.
+                    //Mobilak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select mobilak
                     taulaIzena = "mobilak";
                     ColumnakLortu(taulaIzena);
 
                     break;
                 case "monitoreak":
 
-                    //Monitoreak aukeratzerakoan beteko diren datuak.
+                    //Monitoreak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select monitoreak
                     taulaIzena = "monitoreak";
                     ColumnakLortu(taulaIzena);
 
                     break;
                 case "portatilak":
 
-                    //Portatilak aukeratzerakoan beteko diren datuak.
+                    //Portatilak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select portatilak
                     taulaIzena = "portatilak";
                     ColumnakLortu(taulaIzena);
 
                     break;
                 case "telebistak":
 
-                    //Telebistak aukeratzerakoan beteko diren datuak.
+                    //Telebistak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select telebistak
                     taulaIzena = "telebistak";
                     ColumnakLortu(taulaIzena);
 
@@ -154,7 +160,7 @@ namespace TSB_Inbentarioa
         private void TaulaIzenakLortu()
         {
             //Datu basera konexioa izateko | Connect to the database using a connection string.
-            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
+            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=lanchajim;";
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             try
@@ -191,7 +197,7 @@ namespace TSB_Inbentarioa
             // Add the retrieved table names to the ComboBox control.
             Gailua_CB.Items.AddRange(tableNames.ToArray());
 
-            //Taulak borratzeko.
+            //Taulak borratzeko. | It deletes the tables that we want
             try
             {
                 Gailua_CB.Items.Remove("eraikintaula");
@@ -212,8 +218,8 @@ namespace TSB_Inbentarioa
             //Everytime we change the column, it clears.
             kolumnak_CB.Items.Clear();
 
-            //Datu basera konexioa izateko.
-            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
+            //Datu basera konexioa izateko. | Connection to the database with a string
+            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=lanchajim;";
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             try
@@ -266,7 +272,7 @@ namespace TSB_Inbentarioa
 
         private void Kolumnak_CB_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //String datana | Data string
             string data = "erosketa_data";
 
             if (kolumnak_CB.SelectedItem != null)
@@ -274,39 +280,41 @@ namespace TSB_Inbentarioa
                 if (kolumnak_CB.SelectedItem.Equals(data))
                 {
 
-                    //Hemen fecha datuak aukeratzerakoan aktibatuko diren kalendarioak
+                    //Hemen fecha datuak aukeratzerakoan aktibatuko diren kalendarioak | Calendar will be activated when we select it.
                     HasieraData.Enabled = true;
                     BukaeraData.Enabled = true;
 
-                    //Datu zehatzak desaktibatu.
+                    //Datu zehatzak desaktibatu. | It disable the datu zehatza combo box
                     DatuZehatza_CB.Enabled = false;
 
                 }
                 else
                 {
-                    //Data aukerak desaktibatu.
+                    //Data aukerak desaktibatu. | It disables the date
                     HasieraData.Enabled = false;
                     BukaeraData.Enabled = false;
 
-                    //Datu zehatzak combo box aktibatu
+                    //Datu zehatzak combo box aktibatu | It ables the datu zehatzak combo box
                     DatuZehatza_CB.Enabled = true;
 
                 }
             }
             else
             {
-                //Data aukerak desaktibatu.
+                //Data aukerak desaktibatu. | It disables the date
                 HasieraData.Enabled = false;
                 BukaeraData.Enabled = false;
 
-                //Datu zehatzak desaktibatu
+                //Datu zehatzak desaktibatu | It ables the datu zehatzak combo box
                 DatuZehatza_CB.Enabled = false;
             }
 
             //Hurrengo funtziora sartu aurretik barruko datuak kenduko ditugu, baspada ere.
+            //Before we enter to another function it will clear the Datu zeatzak combo box
             DatuZehatza_CB.Items.Clear();
 
             //Depende ze aukeratzeken, hori irakutzikoik kolumnak_CB.SelectedItem
+            //Depending on what has been selected, it will be displayed in column_CB.SelectedItem. 
             KolumnaDatuakLortzen();
 
 
@@ -317,7 +325,7 @@ namespace TSB_Inbentarioa
 
 
             //Datu basera konexioa izateko | Connect to the database using a connection string.
-            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
+            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=lanchajim;";
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             try
@@ -340,8 +348,10 @@ namespace TSB_Inbentarioa
 
             MySqlCommand command = new MySqlCommand(selectQuery, connection);
 
-            //Irakurri eskatutako datuak.
+            //Irakurri eskatutako datuak. | It reads the asked data
             MySqlDataReader reader = command.ExecuteReader();
+
+            
 
             string datuak = "";
             string id_mintegia;
@@ -357,21 +367,21 @@ namespace TSB_Inbentarioa
                     if (kolumna.Equals( "id_mintegia"))
                     {
 
-                        //Mintegiaren izena lortzeko.
-                        datuak = MintegiIzenaLortu(connection, id_mintegia);
+                        //Mintegiaren izena lortzeko. | To get mintegi izena
+                        datuak = MintegiIzenaLortu(id_mintegia);
 
 
                     }
                     else
                     {
 
-                        //Sartu beharreko datua.
+                        //Sartu beharreko datua. | Data to be entered.
                         datuak = reader[kolumna].ToString();
 
                     }
 
 
-                    //Combox-a bete, barruko datuak irakusteko.
+                    //Combox-a bete, barruko datuak irakusteko. | Fill in the combo box with the data to be shown
                     DatuZehatza_CB.Items.Add(datuak);
 
 
@@ -379,38 +389,45 @@ namespace TSB_Inbentarioa
                 catch
                 {
 
-                    //Errorea ematen badu.
+                    //Errorea ematen badu. | If it gives an error
                     MessageBox.Show("Datu basetik datuak lortzeko garaian, errorea eman du, mesedez jarri mantenuarekin kontaktuan.");
 
                 }
-                finally
-                {
-
-                    //Close connection
-                    connection.Close();
-
-                }
+                
 
 
             }
-
+            //Close connection
+            reader.Close();
+            connection.Close();
 
         }
 
-        private string MintegiIzenaLortu(MySqlConnection connection, string id_mintegia)
+        private string MintegiIzenaLortu(string id_mintegia)
         {
-            //Start connection | Konexioa hasi
-            connection.Open();
+            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=lanchajim;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            try
+            {
+                //Konexioa ireki | Connect to the database
+                connection.Open();
+            }
+            catch
+            {
+                //Show an error message if the connection could not be westablished.
+                MessageBox.Show("Ezin izan da konexioa ezarri, mesedez jarri kontaktuan mantenukoarekin.");
+            }
 
             //Mintegi select-a | Select Mintegia
             string selectMintegia = "SELECT izena FROM mintegitaula WHERE id_mintegia = " + id_mintegia;
 
             string mintegiIzena = "";
 
-            //Mintegi izena lortzeko.
+            //Mintegi izena lortzeko. | With this we can get mintegi izena
             MySqlCommand command = new MySqlCommand(selectMintegia, connection);
 
-            //Sarrerak irakurtzeko / Datuak irakurtzeko
+            //Sarrerak irakurtzeko / Datuak irakurtzeko | To read the data
             MySqlDataReader reader = command.ExecuteReader();
 
             while(reader.Read()) { 
@@ -422,7 +439,7 @@ namespace TSB_Inbentarioa
             //Bukatutakoan konexioa itxiko dugu | Close connection.
             connection.Close();
 
-            //Return the date | Datuak bueltatu
+            //Return the data | Datuak bueltatu 
             return mintegiIzena;
         }
 
@@ -431,6 +448,66 @@ namespace TSB_Inbentarioa
             this.Close();
         }
 
+        private void DatuakBistaratu()
+        {
+            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=lanchajim;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            //Datuak lortzeko | obtain data
+            string gailua = "";
+            string kolumna = "";
+            try
+            {
+                if (Gailua_CB.SelectedItem == null)
+                {
+                    MessageBox.Show("Ezin dezu aukera hau hutsa laga");
+                }
+                else
+                {
+                    gailua = Gailua_CB.SelectedItem.ToString();
+                    //Select kontsulta egiteko | Select to do the query
+                    string selectQuery = "SELECT * FROM " + gailua;
+
+                    MySqlCommand command = new MySqlCommand(selectQuery, connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    DataTable table = new DataTable();
+                    adapter.Fill(table);
+                    dataGridView1.DataSource = table;
+                }
+                if (kolumnak_CB.Visible = false)
+                {
+                    
+
+                }
+                else if (kolumnak_CB.Visible = true)
+                {
+                    if (kolumnak_CB.SelectedItem == null)
+                    {
+
+                    }
+                    else
+                    {
+                        kolumna = kolumnak_CB.SelectedItem.ToString();
+                        //Select kontsulta egiteko | Select to do the query
+                        string selectQuery = "SELECT " + kolumna + " FROM " + gailua;
+
+                        MySqlCommand command = new MySqlCommand(selectQuery, connection);
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        dataGridView1.DataSource = table;
+                    }
+
+
+
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Aukerarik ez duzu egin");
+            }
+           
+        }
 
     }
 }
