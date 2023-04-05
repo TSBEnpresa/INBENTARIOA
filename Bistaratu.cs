@@ -340,11 +340,11 @@ namespace TSB_Inbentarioa
 
             MySqlCommand command = new MySqlCommand(selectQuery, connection);
 
-            //Close connection
-            connection.Close();
-
             //Irakurri eskatutako datuak.
             MySqlDataReader reader = command.ExecuteReader();
+
+            string datuak = "";
+            string id_mintegia;
 
             //Datuak sartzeko | enter data
             while (reader.Read())
@@ -352,13 +352,13 @@ namespace TSB_Inbentarioa
 
                 try
                 {
-                    string datuak = "";
+                    id_mintegia = reader[kolumna].ToString();
 
-                    if (kolumna == "id_mintegia")
+                    if (kolumna.Equals( "id_mintegia"))
                     {
 
                         //Mintegiaren izena lortzeko.
-                        datuak = MintegiIzenaLortu(connection, reader[kolumna].ToString());
+                        datuak = MintegiIzenaLortu(connection, id_mintegia);
 
 
                     }
@@ -374,6 +374,7 @@ namespace TSB_Inbentarioa
                     //Combox-a bete, barruko datuak irakusteko.
                     DatuZehatza_CB.Items.Add(datuak);
 
+
                 }
                 catch
                 {
@@ -382,6 +383,15 @@ namespace TSB_Inbentarioa
                     MessageBox.Show("Datu basetik datuak lortzeko garaian, errorea eman du, mesedez jarri mantenuarekin kontaktuan.");
 
                 }
+                finally
+                {
+
+                    //Close connection
+                    connection.Close();
+
+                }
+
+
             }
 
 
