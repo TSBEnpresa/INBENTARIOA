@@ -67,10 +67,10 @@ namespace TSB_Inbentarioa
             kolumnak_CB.Items.Clear();
 
             //Hasiera data reseteatu | It reset to null the HasieraData
-            HasieraData.ResetText();
+            HasieraDataTime.ResetText();
 
             //Bukaera data reseteatu | It reset to null the BukaeraData
-            BukaeraData.ResetText();
+            BukaeraDataTime.ResetText();
 
             //Datuen aukera (Combo box) reseteatu | It reset to null the DatuZehatza combo box
             DatuZehatza_CB.SelectedItem = null;
@@ -84,9 +84,131 @@ namespace TSB_Inbentarioa
 
         private void Bidali_BT_Click(object sender, EventArgs e)
         {
+            // Bistarazeko taula irakusteko.
             Size = new Size(459, 483);
 
-            DatuakBistaratu();
+            // Konexioa ezartzeko string-a
+            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            /* DATUAK LORTZEKO || OBTEIN DATA */
+            // TAULA
+            string gailuMota = "";
+
+            // KOLUMNA
+            string datuMota = "";
+
+            // DATU ZEHATZA
+            string datuZehatza = "";
+            /* datuZehatza = DatuZehatza_CB.SelectedIndex.ToString(); */
+
+            // HASIERA DATA
+            string hasieraData = "";
+            /* hasieraData = HasieraDataTime.Value.Date.ToString(); */
+
+            // BUKAERA DATA
+            string bukaeraData = "";
+            /* bukaeraData = BukaeraDataTime.Value.Date.ToString(); */
+
+
+            /* DATUAK BISTARATZEKO AUKERAK */
+            if (Gailua_CB.SelectedItem == null)
+            {
+                // GAILU MOTA AUKERATU GABE BALDIN BA DAGO.
+                MessageBox.Show("Mesedez, gailu mota aukeratzea beharrezkoa da.");
+
+                // Lehioaren tamaina berriz bere lekura bueltatu ||
+                // Returns the initial size of the window
+                Size = new Size(459, 280);
+            }
+            else
+            {
+                /* GAILU MOTA AUKERATUTA BALDIN BA DUGU || IF GAILU MOTA IS NOT NULL IT WILL ENTER HERE */
+                if (kolumnak_CB.SelectedItem == null)
+                {
+                    // GAILU MOTARI AUKERATUTAKO BALIOA EMAN || GIVE THE SELECTED VALUE
+                    gailuMota = Gailua_CB.SelectedItem.ToString();
+
+                    // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                    string selQuery = "select * from " + gailuMota + ";";
+
+                    // DATU BASETIK DATUAK BISTARATU || SHOW DATABASE DATA
+                    MySqlCommand command = new MySqlCommand (selQuery, connection);
+
+                    // DATU BASE BARROKO DATUAK ESKURATU || IT TAKES THE DATA FOR THE TABLES (DATABASE)
+                    DataTable table = new DataTable();
+
+                    // DATU BASE BARROKO DATUAK DataGridView-rea ADAPTATU || IT FILLS THE TABLE
+                    MySqlDataAdapter adaptadorea = new MySqlDataAdapter(command);
+                    adaptadorea.Fill (table);
+
+                    // DATUAK DataGridView BARRUAN SARTU || IT SHOWS THE DATA IN THE DataGridView
+                    dataGridView1.DataSource = table;
+
+                }
+                else
+                {
+
+                    /* DATA AUKERATU BALDIN BA DUGU || IF DATA IS NOT NULL IT WILL ENTER HERE */
+                    if (kolumnak_CB.SelectedItem.ToString().Contains("erosketa_data"))
+                    {
+
+
+
+                    }
+                    else if (DatuZehatza_CB.SelectedItem == null)
+                    {
+                        /* DATA AUKERATU EZ BALDIN BA DUGU || IF DATA IS NULL IT WILL ENTER HERE */
+
+                        // AUKERATUTAKO BALIOAK EMAN || GIVE THE SELECTED VALUE
+                        gailuMota = Gailua_CB.SelectedItem.ToString();
+                        datuMota = kolumnak_CB.SelectedItem.ToString();
+
+                        // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                        string selQuery = "select " + datuMota + " from " + gailuMota + ";";
+
+                        // DATU BASETIK DATUAK BISTARATU || SHOW DATABASE DATA
+                        MySqlCommand command = new MySqlCommand(selQuery, connection);
+
+                        // DATU BASE BARROKO DATUAK ESKURATU || IT TAKES THE DATA FOR THE TABLES (DATABASE)
+                        DataTable table = new DataTable();
+
+                        // DATU BASE BARROKO DATUAK DataGridView-rea ADAPTATU || IT FILLS THE TABLE
+                        MySqlDataAdapter adaptadorea = new MySqlDataAdapter(command);
+                        adaptadorea.Fill(table);
+
+                        // DATUAK DataGridView BARRUAN SARTU || IT SHOWS THE DATA IN THE DataGridView
+                        dataGridView1.DataSource = table;
+                    }
+                    else
+                    {
+                        /* DATU ZEHATZA AUKERATU BALDIN BA DUGU || IF DATU ZEHATZA IS NOT NULL IT WILL ENTER HERE */
+
+                        // AUKERATUTAKO BALIOAK EMAN || GIVE THE SELECTED VALUE
+                        gailuMota = Gailua_CB.SelectedItem.ToString();
+                        datuMota = kolumnak_CB.SelectedItem.ToString();
+                        datuZehatza = DatuZehatza_CB.SelectedItem.ToString();
+
+                        // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                        string selQuery = "select * from " + gailuMota + " where " + datuMota + " = '" + datuZehatza + "' ;";
+
+                        // DATU BASETIK DATUAK BISTARATU || SHOW DATABASE DATA
+                        MySqlCommand command = new MySqlCommand(selQuery, connection);
+
+                        // DATU BASE BARROKO DATUAK ESKURATU || IT TAKES THE DATA FOR THE TABLES (DATABASE)
+                        DataTable table = new DataTable();
+
+                        // DATU BASE BARROKO DATUAK DataGridView-rea ADAPTATU || IT FILLS THE TABLE
+                        MySqlDataAdapter adaptadorea = new MySqlDataAdapter(command);
+                        adaptadorea.Fill(table);
+
+                        // DATUAK DataGridView BARRUAN SARTU || IT SHOWS THE DATA IN THE DataGridView
+                        dataGridView1.DataSource = table;
+                    }
+                }
+            }
+
+            // BUKAERA
         }
 
         private void Gailua_CB_SelectedIndexChanged(object sender, EventArgs e)
@@ -160,7 +282,7 @@ namespace TSB_Inbentarioa
         private void TaulaIzenakLortu()
         {
             //Datu basera konexioa izateko | Connect to the database using a connection string.
-            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=lanchajim;";
+            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             try
@@ -219,7 +341,7 @@ namespace TSB_Inbentarioa
             kolumnak_CB.Items.Clear();
 
             //Datu basera konexioa izateko. | Connection to the database with a string
-            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=lanchajim;";
+            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             try
@@ -281,8 +403,8 @@ namespace TSB_Inbentarioa
                 {
 
                     //Hemen fecha datuak aukeratzerakoan aktibatuko diren kalendarioak | Calendar will be activated when we select it.
-                    HasieraData.Enabled = true;
-                    BukaeraData.Enabled = true;
+                    HasieraDataTime.Enabled = true;
+                    BukaeraDataTime.Enabled = true;
 
                     //Datu zehatzak desaktibatu. | It disable the datu zehatza combo box
                     DatuZehatza_CB.Enabled = false;
@@ -291,8 +413,8 @@ namespace TSB_Inbentarioa
                 else
                 {
                     //Data aukerak desaktibatu. | It disables the date
-                    HasieraData.Enabled = false;
-                    BukaeraData.Enabled = false;
+                    HasieraDataTime.Enabled = false;
+                    BukaeraDataTime.Enabled = false;
 
                     //Datu zehatzak combo box aktibatu | It ables the datu zehatzak combo box
                     DatuZehatza_CB.Enabled = true;
@@ -302,8 +424,8 @@ namespace TSB_Inbentarioa
             else
             {
                 //Data aukerak desaktibatu. | It disables the date
-                HasieraData.Enabled = false;
-                BukaeraData.Enabled = false;
+                HasieraDataTime.Enabled = false;
+                BukaeraDataTime.Enabled = false;
 
                 //Datu zehatzak desaktibatu | It ables the datu zehatzak combo box
                 DatuZehatza_CB.Enabled = false;
@@ -325,7 +447,7 @@ namespace TSB_Inbentarioa
 
 
             //Datu basera konexioa izateko | Connect to the database using a connection string.
-            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=lanchajim;";
+            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             try
@@ -405,7 +527,7 @@ namespace TSB_Inbentarioa
 
         private string MintegiIzenaLortu(string id_mintegia)
         {
-            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=lanchajim;";
+            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             try
@@ -448,64 +570,6 @@ namespace TSB_Inbentarioa
             this.Close();
         }
 
-        private void DatuakBistaratu()
-        {
-            string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=lanchajim;";
-            MySqlConnection connection = new MySqlConnection(connectionString);
-
-            //Datuak lortzeko | obtain data
-            string gailua = "";
-            string kolumna = "";
-            try
-            {
-                if (Gailua_CB.SelectedItem == null)
-                {
-                    MessageBox.Show("Ezin dezu aukera hau hutsa laga");
-                }
-                else
-                {
-                    gailua = Gailua_CB.SelectedItem.ToString();
-                    //Select kontsulta egiteko | Select to do the query
-                    string selectQuery = "SELECT * FROM " + gailua;
-
-                    MySqlCommand command = new MySqlCommand(selectQuery, connection);
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                    DataTable table = new DataTable();
-                    adapter.Fill(table);
-                    dataGridView1.DataSource = table;
-                }
-                if (kolumnak_CB.Visible = false)
-                {
-                    
-
-                }
-                else if (kolumnak_CB.Visible = true)
-                {
-                    if (kolumnak_CB.SelectedItem == null)
-                    {
-
-                    }
-                    else
-                    {
-                        kolumna = kolumnak_CB.SelectedItem.ToString();
-                        //Select kontsulta egiteko | Select to do the query
-                        string selectQuery = "SELECT " + kolumna + " FROM " + gailua;
-
-                        MySqlCommand command = new MySqlCommand(selectQuery, connection);
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                        DataTable table = new DataTable();
-                        adapter.Fill(table);
-                        dataGridView1.DataSource = table;
-                    }
-
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Aukerarik ez duzu egin");
-            }
-           
-        }
 
     }
 }

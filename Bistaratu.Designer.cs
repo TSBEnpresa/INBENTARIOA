@@ -36,8 +36,8 @@
             this.Reset_BT = new System.Windows.Forms.Button();
             this.kolumnak_CB = new System.Windows.Forms.ComboBox();
             this.DatuZehatza_CB = new System.Windows.Forms.ComboBox();
-            this.HasieraData = new System.Windows.Forms.DateTimePicker();
-            this.BukaeraData = new System.Windows.Forms.DateTimePicker();
+            this.HasieraDataTime = new System.Windows.Forms.DateTimePicker();
+            this.BukaeraDataTime = new System.Windows.Forms.DateTimePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -136,25 +136,25 @@
             this.DatuZehatza_CB.TabIndex = 7;
             this.DatuZehatza_CB.SelectedIndexChanged += new System.EventHandler(this.DatuZehatza_CB_SelectedIndexChanged);
             // 
-            // HasieraData
+            // HasieraDataTime
             // 
-            this.HasieraData.CalendarFont = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HasieraData.Enabled = false;
-            this.HasieraData.Location = new System.Drawing.Point(89, 223);
-            this.HasieraData.Margin = new System.Windows.Forms.Padding(4);
-            this.HasieraData.Name = "HasieraData";
-            this.HasieraData.Size = new System.Drawing.Size(199, 22);
-            this.HasieraData.TabIndex = 8;
+            this.HasieraDataTime.CalendarFont = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HasieraDataTime.Enabled = false;
+            this.HasieraDataTime.Location = new System.Drawing.Point(89, 223);
+            this.HasieraDataTime.Margin = new System.Windows.Forms.Padding(4);
+            this.HasieraDataTime.Name = "HasieraDataTime";
+            this.HasieraDataTime.Size = new System.Drawing.Size(199, 22);
+            this.HasieraDataTime.TabIndex = 8;
             // 
-            // BukaeraData
+            // BukaeraDataTime
             // 
-            this.BukaeraData.CalendarFont = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BukaeraData.Enabled = false;
-            this.BukaeraData.Location = new System.Drawing.Point(303, 223);
-            this.BukaeraData.Margin = new System.Windows.Forms.Padding(4);
-            this.BukaeraData.Name = "BukaeraData";
-            this.BukaeraData.Size = new System.Drawing.Size(199, 22);
-            this.BukaeraData.TabIndex = 9;
+            this.BukaeraDataTime.CalendarFont = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BukaeraDataTime.Enabled = false;
+            this.BukaeraDataTime.Location = new System.Drawing.Point(303, 223);
+            this.BukaeraDataTime.Margin = new System.Windows.Forms.Padding(4);
+            this.BukaeraDataTime.Name = "BukaeraDataTime";
+            this.BukaeraDataTime.Size = new System.Drawing.Size(199, 22);
+            this.BukaeraDataTime.TabIndex = 9;
             // 
             // pictureBox1
             // 
@@ -237,8 +237,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.BukaeraData);
-            this.Controls.Add(this.HasieraData);
+            this.Controls.Add(this.BukaeraDataTime);
+            this.Controls.Add(this.HasieraDataTime);
             this.Controls.Add(this.DatuZehatza_CB);
             this.Controls.Add(this.kolumnak_CB);
             this.Controls.Add(this.Reset_BT);
@@ -273,8 +273,8 @@
         private System.Windows.Forms.Button Reset_BT;
         private System.Windows.Forms.ComboBox kolumnak_CB;
         private System.Windows.Forms.ComboBox DatuZehatza_CB;
-        private System.Windows.Forms.DateTimePicker HasieraData;
-        private System.Windows.Forms.DateTimePicker BukaeraData;
+        private System.Windows.Forms.DateTimePicker HasieraDataTime;
+        private System.Windows.Forms.DateTimePicker BukaeraDataTime;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
