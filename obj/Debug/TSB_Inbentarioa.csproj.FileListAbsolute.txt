@@ -98,3 +98,39 @@ C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inb
 C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.csproj.CopyComplete
 C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.exe
 C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.pdb
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\TSB_Inbentarioa.exe.config
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\TSB_Inbentarioa.exe
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\TSB_Inbentarioa.pdb
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\BouncyCastle.Crypto.dll
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\Google.Protobuf.dll
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\K4os.Compression.LZ4.dll
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\K4os.Compression.LZ4.Streams.dll
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\K4os.Hash.xxHash.dll
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\MySql.Data.dll
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\System.Buffers.dll
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\System.Memory.dll
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\System.Numerics.Vectors.dll
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\BouncyCastle.Crypto.xml
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\Google.Protobuf.pdb
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\Google.Protobuf.xml
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\K4os.Compression.LZ4.xml
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\K4os.Compression.LZ4.Streams.xml
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\K4os.Hash.xxHash.xml
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\MySql.Data.xml
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\System.Buffers.xml
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\System.Memory.xml
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\System.Numerics.Vectors.xml
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.csproj.AssemblyReference.cache
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.csproj.SuggestedBindingRedirects.cache
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.AdminAukerak.resources
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.Bistaratu.resources
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.Hasiera_Form.resources
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.Kredituak.resources
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.Properties.Resources.resources
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.csproj.GenerateResource.cache
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.csproj.CoreCompileInputs.cache
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.csproj.CopyComplete
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.exe
+H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.pdb

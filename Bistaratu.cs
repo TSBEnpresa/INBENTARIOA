@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Management;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,7 +21,7 @@ namespace TSB_Inbentarioa
     {
 
         // ADMINISTRADOREA BALDIN BA DA, AUKERA DESBERDINAK IZANGO DITU || 
-        // IF HE'S AN ADMINISTRATOR, the program will have different options.
+        // IF HE'S AN ADMINISTRATOR, THE PROGRAM WILL HAVE DIFFERENT OPTIONS
         bool admin = false;
 
         // KONEXIORAKO ERABILIKO DUGUN STRING-A || CONNECTION STRING
@@ -29,6 +30,7 @@ namespace TSB_Inbentarioa
 
         public Bistaratu()
         {
+            // BISTARATURI HASIERA EMATEKO || START BISTARATU
             InitializeComponent();
         }
 
@@ -36,14 +38,17 @@ namespace TSB_Inbentarioa
         {
             InitializeComponent();
 
-            //Administradorea baldin bada, programak aukera diferenteak izango ditu.
-            //If he's an administrator, the program will have different options.
+            // Administradorea baldin bada, programak aukera diferenteak izango ditu.
+            // If he's an administrator, the program will have different options.
             admin = administrador;
 
         }
 
         private void Bistaratu_Load(object sender, EventArgs e)
         {
+
+            // ADMIN AL DEN EDO EZ ESANGO DIOGU || IS ADMIN?
+
             if (admin == true)
             {
                 pictureBox1.Visible = true;
@@ -53,20 +58,20 @@ namespace TSB_Inbentarioa
                 pictureBox1.Visible = false;
             }
 
+            // DATU BASEAREN BARRUAN ZEIN TAULA DAUDEN ESANGO DIGUNA || IT WILL TELL US WHICH TABLES ARE INSIDE
             TaulaIzenakLortu();
-            
 
         }
 
         private void Reset_BT_Click(object sender, EventArgs e)
         {
-            //Lehioaren tamaina berriz bere lekura bueltatu || Returns the initial size of the window
+            // LEIHOAREN TAMAINA BERRIZ BERE LEKURA BUELTATU || RETURNS THE INITIAL SIZE OF THE WINDOW
             Size = new Size(459, 280);
 
             // BOTOIAK EDO AUKERAK BERRABIARAZI || RESET BUTTOMS
             BotoiakBerrabiarazi();
 
-            //Bistaratze lehioa garbitu egiten du || It cleans the datagridview window
+            // BISTARATZE LEIHOA GARBITU EGITEN DU || IT CLEANS THE DataGridView WINDOW
             dataGridView1.DataSource = null;
         }
 
@@ -510,38 +515,36 @@ namespace TSB_Inbentarioa
         {
 
 
-            //Datu basera konexioa izateko | Connect to the database using a connection string.
+            // DATU BASERA KONEXIOA IZATEKO || CONNECT TO THE DATABASE USING A CONNECTION STRING
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             try
             {
-                //Konexioa ireki | Connect to the database
+                // Konexioa ireki || Connect to the database
                 connection.Open();
             }
             catch
             {
-                //Show an error message if the connection could not be westablished.
+                // Show an error message if the connection could not be westablished.
                 MessageBox.Show("Ezin izan da konexioa ezarri, mesedez jarri kontaktuan mantenukoarekin.");
             }
 
-            //Datuak lortzeko | obtain data
+            // DATUAK LORTZEKO || OBTAIN DATA
             string gailua = Gailua_CB.SelectedItem.ToString();
             string kolumna = kolumnak_CB.SelectedItem.ToString();
 
-            //Select kontsulta egiteko | Select to do the query
+            // SELECT KOLUMNA EGITEKO || SELECT TO DO THE QUERY
             string selectQuery = "SELECT " + kolumna + " FROM " + gailua;
 
             MySqlCommand command = new MySqlCommand(selectQuery, connection);
 
-            //Irakurri eskatutako datuak. | It reads the asked data
+            // IRAKURRI ESKATUTAKO DATUAK || IT READS THE ASKED DATA
             MySqlDataReader reader = command.ExecuteReader();
-
-            
 
             string datuak = "";
             string id_mintegia;
 
-            //Datuak sartzeko | enter data
+            // DATUAK SARTZEKO || ENTER DATA
             while (reader.Read())
             {
 
@@ -549,32 +552,50 @@ namespace TSB_Inbentarioa
                 {
                     id_mintegia = reader[kolumna].ToString();
 
-                    if (kolumna.Equals( "id_mintegia"))
+                    if (kolumna.Equals( "id_mintegia" ))
                     {
 
-                        //Mintegiaren izena lortzeko. | To get mintegi izena
+                        // MINTEGIAREN IZENA LORTZEKO || TO GET MINTEGI IZENA
                         datuak = MintegiIzenaLortu(id_mintegia);
 
+                        // Combox-a bete, barruko datuak irakusteko || Fill in the combo box with the data to be shown
+                        DatuZehatza_CB.Items.Add(datuak);
+
+
+                    }
+                    else if (kolumna.Equals( "baja" ))
+                    {
+                        // DAKIGUN BEZALA, GAILUAK BAJA "BAI" EDO "EZ" BAKARRIK IZAN DEZAKETE (HORREGATIK JARTZIN DUGU ESKUZ).
+                        datuak = "EZ";
+
+                        // Combox-a bete, barruko datuak irakusteko || Fill in the combo box with the data to be shown
+                        DatuZehatza_CB.Items.Add(datuak);
+
+                        datuak = "BAI";
+
+                        // Combox-a bete, barruko datuak irakusteko || Fill in the combo box with the data to be shown
+                        DatuZehatza_CB.Items.Add(datuak);
+
+                        break;
 
                     }
                     else
                     {
 
-                        //Sartu beharreko datua. | Data to be entered.
+                        // Sartu beharreko datua || Data to be entered.
                         datuak = reader[kolumna].ToString();
 
+                        // Combox-a bete, barruko datuak irakusteko || Fill in the combo box with the data to be shown
+                        DatuZehatza_CB.Items.Add(datuak);
+
                     }
-
-
-                    //Combox-a bete, barruko datuak irakusteko. | Fill in the combo box with the data to be shown
-                    DatuZehatza_CB.Items.Add(datuak);
 
 
                 }
                 catch
                 {
 
-                    //Errorea ematen badu. | If it gives an error
+                    // Errorea ematen badu || If it gives an error
                     MessageBox.Show("Datu basetik datuak lortzeko garaian, errorea eman du, mesedez jarri mantenuarekin kontaktuan.");
 
                 }
@@ -582,7 +603,7 @@ namespace TSB_Inbentarioa
 
 
             }
-            //Close connection
+            // Close connection || KONEXIOA ITXI
             reader.Close();
             connection.Close();
 
@@ -590,7 +611,7 @@ namespace TSB_Inbentarioa
 
         private string MintegiIzenaLortu(string id_mintegia)
         {
-
+            // DATU BASERA KONEXIOA IZATEKO || CONNECT TO THE DATABASE USING A CONNECTION STRING
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             try
@@ -630,6 +651,7 @@ namespace TSB_Inbentarioa
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            // LEIHO HAU ITXI || CLOSE WINDOW
             this.Close();
         }
 

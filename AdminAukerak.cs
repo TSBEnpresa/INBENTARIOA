@@ -12,7 +12,7 @@ namespace TSB_Inbentarioa
 {
     public partial class AdminAukerak : Form
     {
-
+        // ZEIN ERABILTZAILE ERABILIKO DUGUN GORDEKO DUGUN PARAMETROA.
         string erabiltzailea;
  
         public AdminAukerak(string erabil)
@@ -47,6 +47,7 @@ namespace TSB_Inbentarioa
 
         private void ITXI_BT_Click(object sender, EventArgs e)
         {
+            // LEIHOA ITXI || CLOSE WINDOW
             this.Close();
         }
 
@@ -60,23 +61,22 @@ namespace TSB_Inbentarioa
 
         }
 
-        //Bistaratu botoiari sakatzerakoan exekutatuko dena.
         private void Bistaratu_BT_Click(object sender, EventArgs e)
         {
             bool admin = true;
 
-            // Bistaratuaren kontruktoreari hots egiteko.
+            // BISTARATUAREN KONSTRUKTOREARI HOTS EGITEKO || CALL THE BUILDER OF "Bistaratu"
             using (Bistaratu bista = new Bistaratu(admin))
             {
                 try
                 {
-                    //Hide honekin, hasiera lehioa kentzea/ixkutatzea lortze deu.
+                    // Hide honekin, hasiera lehioa kentzea/ixkutatzea lortze deu.
                     this.Hide();
 
-                    //Behin aurreko hide ejekutatzen denean, "ShowDialog"-ekin hurrengo leixue irikiko deu.
+                    // Behin aurreko hide ejekutatzen denean, "ShowDialog"-ekin hurrengo leixue irikiko deu.
                     bista.ShowDialog();
 
-                    //Behin dana egin eta gero, ixkutun daon aplikaixue berriro irakutsiko dugu
+                    // Behin dana egin eta gero, ixkutun daon aplikaixue berriro irakutsiko dugu
                     this.Show();
 
                 }

@@ -33,20 +33,20 @@ namespace TSB_Inbentarioa
         private void SARTU_BT_Click(object sender, EventArgs e)
         {
 
-            //Erabiltzaileen pasahitza.
+            // ERABILTZAILEEN PASAHITZA || USER PASSWORD
             string adminPSW = "admin"; string langilePSW = "langilea";
 
-            //Sartutako erabiltzailea eta pasahitza gordetzeko.
+            // SARTUTAKO ERABILTZAILEA ETA PASAHITZA GORDETZEKO || SAVE THE PASSWORD
             string erabiltzailea = ""; string pasahitza = "";
 
 
             try
             {
-                //Erabiltzaileen izenak gordetzen dituzten string-ak, gero konparatzeko erabiliko ditugu.
+                // Erabiltzaileen izenak gordetzen dituzten string-ak, gero konparatzeko erabiliko ditugu.
                 string administraria = Erabiltzaileak_CB.Items[0].ToString();
                 string langilea = Erabiltzaileak_CB.Items[1].ToString();
 
-                //Programaren login-a kontrolatuta edukitzeko.
+                // Programaren login-a kontrolatuta edukitzeko.
                 erabiltzailea = Erabiltzaileak_CB.SelectedItem.ToString();
                 pasahitza = pasahitza_TB.Text.ToString();
 
@@ -60,13 +60,13 @@ namespace TSB_Inbentarioa
                         {
                             try
                             {
-                                //Hide honekin, hasiera lehioa kentzea/ixkutatzea lortze deu.
+                                // Hide honekin, hasiera lehioa kentzea/ixkutatzea lortze deu.
                                 this.Hide();
 
-                                //Behin aurreko hide ejekutatzen denean, "ShowDialog"-ekin hurrengo leixue irikiko deu.
+                                // Behin aurreko hide ejekutatzen denean, "ShowDialog"-ekin hurrengo leixue irikiko deu.
                                 admin.ShowDialog();
 
-                                //Behin dana egin eta gero, ixkutun daon aplikaixue itxiko deu.
+                                // Behin dana egin eta gero, ixkutun daon aplikaixue itxiko deu.
                                 this.Close();
 
                             }
@@ -95,13 +95,13 @@ namespace TSB_Inbentarioa
                         {
                             try
                             {
-                                //Hide honekin, hasiera lehioa kentzea/ixkutatzea lortze deu.
+                                // Hide honekin, hasiera lehioa kentzea/ixkutatzea lortze deu.
                                 this.Hide();
 
-                                //Behin aurreko hide ejekutatzen denean, "ShowDialog"-ekin hurrengo leixue irikiko deu.
+                                // Behin aurreko hide ejekutatzen denean, "ShowDialog"-ekin hurrengo leixue irikiko deu.
                                 bista.ShowDialog();
 
-                                //Behin dana egin eta gero, ixkutun daon aplikaixue itxiko deu.
+                                // Behin dana egin eta gero, ixkutun daon aplikaixue itxiko deu.
                                 this.Close();
 
                             }
