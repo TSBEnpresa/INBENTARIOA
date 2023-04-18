@@ -498,8 +498,6 @@ namespace TSB_Inbentarioa
                         dataGridView1.DataSource = table;
                     }
 
-
-
                 }
             }
             catch
