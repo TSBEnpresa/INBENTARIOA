@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.Collections;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -58,6 +59,27 @@ namespace TSB_Inbentarioa
 
         private void Baja_BT_Click(object sender, EventArgs e)
         {
+            // GAILUEN BAJA KUDEATZEKO LEIHOA IREKIKO DUGU || IT OPENS A WINDOW TO MANAGE DEVICE STATUS
+            using (Baja baja = new Baja())
+            {
+
+                try
+                {
+                    // Hide honekin, hasiera lehioa kentzea/ixkutatzea lortze deu.
+                    this.Hide();
+
+                    // Behin aurreko hide ejekutatzen denean, "ShowDialog"-ekin hurrengo leixue irikiko deu.
+                    baja.ShowDialog();
+
+                    // Behin dana egin eta gero, ixkutun daon aplikaixue berriro irakutsiko dugu
+                    this.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ezin izan da lehio ireki: " + ex.Message);
+                }
+
+            }
 
         }
 

@@ -47,6 +47,7 @@
             this.BajaBAI_CheckB = new System.Windows.Forms.CheckBox();
             this.BajaEZ_CheckB = new System.Windows.Forms.CheckBox();
             this.baja = new System.Windows.Forms.Label();
+            this.ZKop_TXT = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -225,7 +226,7 @@
             // 
             this.DBistaratu_txt.AutoSize = true;
             this.DBistaratu_txt.Font = new System.Drawing.Font("Yu Gothic UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DBistaratu_txt.Location = new System.Drawing.Point(350, 27);
+            this.DBistaratu_txt.Location = new System.Drawing.Point(414, 27);
             this.DBistaratu_txt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DBistaratu_txt.Name = "DBistaratu_txt";
             this.DBistaratu_txt.Size = new System.Drawing.Size(286, 41);
@@ -246,7 +247,7 @@
             // BajaEZ_CheckB
             // 
             this.BajaEZ_CheckB.Font = new System.Drawing.Font("Yu Gothic UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BajaEZ_CheckB.Location = new System.Drawing.Point(508, 266);
+            this.BajaEZ_CheckB.Location = new System.Drawing.Point(507, 266);
             this.BajaEZ_CheckB.Name = "BajaEZ_CheckB";
             this.BajaEZ_CheckB.Size = new System.Drawing.Size(81, 30);
             this.BajaEZ_CheckB.TabIndex = 101;
@@ -264,6 +265,16 @@
             this.baja.TabIndex = 102;
             this.baja.Text = "Bajan dago?";
             // 
+            // ZKop_TXT
+            // 
+            this.ZKop_TXT.AutoSize = true;
+            this.ZKop_TXT.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ZKop_TXT.Location = new System.Drawing.Point(12, 317);
+            this.ZKop_TXT.Name = "ZKop_TXT";
+            this.ZKop_TXT.Size = new System.Drawing.Size(171, 23);
+            this.ZKop_TXT.TabIndex = 103;
+            this.ZKop_TXT.Text = "ZUTABE KOPURUA: 0";
+            // 
             // Bistaratu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -272,6 +283,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1203, 663);
+            this.Controls.Add(this.ZKop_TXT);
             this.Controls.Add(this.baja);
             this.Controls.Add(this.BajaEZ_CheckB);
             this.Controls.Add(this.BajaBAI_CheckB);
@@ -326,5 +338,6 @@
         private System.Windows.Forms.CheckBox BajaBAI_CheckB;
         private System.Windows.Forms.CheckBox BajaEZ_CheckB;
         private System.Windows.Forms.Label baja;
+        private System.Windows.Forms.Label ZKop_TXT;
     }
 }

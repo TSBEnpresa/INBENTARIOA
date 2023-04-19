@@ -93,6 +93,12 @@
     <Compile Include="Bistaratu.Designer.cs">
       <DependentUpon>Bistaratu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Baja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Baja.Designer.cs">
+      <DependentUpon>Baja.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kredituak.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AdminAukerak.resx">
       <DependentUpon>AdminAukerak.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Baja.resx">
+      <DependentUpon>Baja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bistaratu.resx">
       <DependentUpon>Bistaratu.cs</DependentUpon>
@@ -127,6 +136,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -141,6 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Diseinua\HASIERA2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

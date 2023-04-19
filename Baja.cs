@@ -1,66 +1,33 @@
-﻿using System;
-using System.CodeDom.Compiler;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Management;
-using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI;
-using MySqlX.XDevAPI.Relational;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TSB_Inbentarioa
 {
-    public partial class Bistaratu : Form
+    public partial class Baja : Form
     {
-
-        // ADMINISTRADOREA BALDIN BA DA, AUKERA DESBERDINAK IZANGO DITU || 
-        // IF HE'S AN ADMINISTRATOR, THE PROGRAM WILL HAVE DIFFERENT OPTIONS
-        bool admin = false;
 
         // KONEXIORAKO ERABILIKO DUGUN STRING-A || CONNECTION STRING
         static string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
 
-        public Bistaratu()
+        public Baja()
         {
-            // BISTARATURI HASIERA EMATEKO || START BISTARATU
             InitializeComponent();
         }
 
-        public Bistaratu(bool administrador)
+        private void Baja_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
-
-            // Administradorea baldin bada, programak aukera diferenteak izango ditu.
-            // If he's an administrator, the program will have different options.
-            admin = administrador;
-
-        }
-
-        private void Bistaratu_Load(object sender, EventArgs e)
-        {
-
-            // ADMIN AL DEN EDO EZ ESANGO DIOGU || IS ADMIN?
-
-            if (admin == true)
-            {
-                pictureBox1.Visible = true;
-            }
-            else
-            {
-                pictureBox1.Visible = false;
-            }
+            pictureBox1.Visible = true;
 
             // DATU BASEAREN BARRUAN ZEIN TAULA DAUDEN ESANGO DIGUNA || IT WILL TELL US WHICH TABLES ARE INSIDE
             TaulaIzenakLortu();
-
         }
 
         private void Reset_BT_Click(object sender, EventArgs e)
@@ -154,7 +121,7 @@ namespace TSB_Inbentarioa
                 // BAJAN AL DAGOEN EDO EZ AUKERA EGITEKO || TO CHECK IF BAJA IS CHECKED
                 if (BajaBAI_CheckB.Checked && !BajaEZ_CheckB.Checked)
                 {
-                    
+
                     for (int i = 0; i < Gailua_CB.Items.Count; i++)
                     {
                         // AUKERATUTAKO BALIOA EMAN || GIVE THE SELECTED VALUE
@@ -279,7 +246,7 @@ namespace TSB_Inbentarioa
 
                 }
                 else
-                {   
+                {
                     if (kolumnak_CB.SelectedItem.ToString().Contains("erosketa_data"))
                     {
                         /* DATA AUKERATU BALDIN BA DUGU || IF DATA IS NOT NULL IT WILL ENTER HERE */
@@ -298,7 +265,7 @@ namespace TSB_Inbentarioa
                         if (BajaBAI_CheckB.Checked && !BajaEZ_CheckB.Checked)
                         {
                             // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
-                            selQuery = "select * from " + gailuMota + 
+                            selQuery = "select * from " + gailuMota +
                                 " where baja = 'Bai' and " + datuMota + " between '" + hasieraData + "' and '" + bukaeraData + "' ;";
                         }
                         else if (BajaEZ_CheckB.Checked && !BajaBAI_CheckB.Checked)
@@ -314,7 +281,7 @@ namespace TSB_Inbentarioa
                                 " where " + datuMota + " between '" + hasieraData + "' and '" + bukaeraData + "' ;";
                         }
 
-                        
+
 
                         if (dt_HasieraData > dt_BukaeraData)
                         {
@@ -340,7 +307,7 @@ namespace TSB_Inbentarioa
                         if (BajaBAI_CheckB.Checked && !BajaEZ_CheckB.Checked)
                         {
                             // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
-                            selQuery = "select distinct " + datuMota + " from " + gailuMota + 
+                            selQuery = "select distinct " + datuMota + " from " + gailuMota +
                                 " where baja = 'Bai';";
                         }
                         else if (BajaEZ_CheckB.Checked && !BajaBAI_CheckB.Checked)
@@ -372,11 +339,11 @@ namespace TSB_Inbentarioa
 
                         // "id_mintegia" DENEAN, BERRIZ ZENBAKIETARA BUELTAKO DUGU || RETURN THE "id_mintegia" NUMBER
                         if (datuMota.Equals("id_mintegia"))
-                        { 
+                        {
 
 
                             // MINTEGIAREN ZENBAKIA LORTZEKO || GET MINTEGIA NUMBER
-                            string mintegiZenbakia = 
+                            string mintegiZenbakia =
                                 "select " + datuMota + " from mintegitaula where izena = '" + datuZehatza + "';";
 
                             // DATU BASETIK DATUAK BISTARATU || SHOW DATABASE DATA
@@ -400,7 +367,7 @@ namespace TSB_Inbentarioa
                         if (BajaBAI_CheckB.Checked && !BajaEZ_CheckB.Checked)
                         {
                             // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
-                            selQuery = "select * from " + gailuMota + 
+                            selQuery = "select * from " + gailuMota +
                                 " where baja = 'Bai' and " + datuMota + " = '" + datuZehatza + "' ;";
                         }
                         else if (BajaEZ_CheckB.Checked && !BajaBAI_CheckB.Checked)
@@ -471,8 +438,8 @@ namespace TSB_Inbentarioa
 
             switch (Gailua_CB.SelectedItem)
             {
-            
-                
+
+
                 case "inprimagailuak":
 
                     //Inprimagailuak aukeratzerakoan beteko diren datuak | The information that it will be filled when we select inprimagailuak
@@ -547,7 +514,7 @@ namespace TSB_Inbentarioa
             List<string> tableNames = new List<string>();
             while (reader.Read())
             {
-            
+
                 tableNames.Add(reader.GetString(0));
 
             }
@@ -589,12 +556,14 @@ namespace TSB_Inbentarioa
                 //Konexioa ireki | Connect to the database
                 connection.Open();
 
-            } catch {
+            }
+            catch
+            {
 
                 MessageBox.Show("Ezin izan da konexioa ezarri, mesedez jarri kontaktuan mantenukoarekin.");
 
             }
-            
+
 
             //Kontsulta bat sortu | Create a query
             string query = $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{taulaIzena}'";
@@ -608,7 +577,8 @@ namespace TSB_Inbentarioa
             //Kolumnak gordetzeko lista | A list to save the column names
             List<string> columns = new List<string>();
 
-            while (reader.Read()) {
+            while (reader.Read())
+            {
 
                 columns.Add(reader.GetString(0));
 
@@ -628,7 +598,7 @@ namespace TSB_Inbentarioa
         private void DatuZehatza_CB_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            
+
 
         }
 
@@ -723,7 +693,7 @@ namespace TSB_Inbentarioa
                 {
                     id_mintegia = reader[kolumna].ToString();
 
-                    if (kolumna.Equals( "id_mintegia" ))
+                    if (kolumna.Equals("id_mintegia"))
                     {
 
                         // MINTEGIAREN IZENA LORTZEKO || TO GET MINTEGI IZENA
@@ -734,7 +704,7 @@ namespace TSB_Inbentarioa
 
 
                     }
-                    else if (kolumna.Equals( "baja" ))
+                    else if (kolumna.Equals("baja"))
                     {
                         // DAKIGUN BEZALA, GAILUAK BAJA "BAI" EDO "EZ" BAKARRIK IZAN DEZAKETE (HORREGATIK JARTZIN DUGU ESKUZ).
                         datuak = "EZ";
@@ -770,7 +740,7 @@ namespace TSB_Inbentarioa
                     MessageBox.Show("Datu basetik datuak lortzeko garaian, errorea eman du, mesedez jarri mantenuarekin kontaktuan.");
 
                 }
-                
+
 
 
             }
@@ -807,7 +777,8 @@ namespace TSB_Inbentarioa
             //Sarrerak irakurtzeko / Datuak irakurtzeko | To read the data
             MySqlDataReader reader = command.ExecuteReader();
 
-            while(reader.Read()) { 
+            while (reader.Read())
+            {
 
                 mintegiIzena = reader["izena"].ToString();
 
@@ -824,11 +795,6 @@ namespace TSB_Inbentarioa
         {
             // LEIHO HAU ITXI || CLOSE WINDOW
             this.Close();
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

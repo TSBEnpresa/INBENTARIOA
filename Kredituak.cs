@@ -27,7 +27,7 @@ namespace TSB_Inbentarioa
                 System.Diagnostics.Process.Start(linka);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 MessageBox.Show("Ezin izan da web orria ireki, kontaktatu teknikariarekin mesedez: " + e);
@@ -56,7 +56,7 @@ namespace TSB_Inbentarioa
                 System.Diagnostics.Process.Start(ander);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 MessageBox.Show("Ezin izan da web orria ireki, kontaktatu teknikariarekin mesedez: " + e);
@@ -81,7 +81,7 @@ namespace TSB_Inbentarioa
                 System.Diagnostics.Process.Start(lander);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 MessageBox.Show("Ezin izan da web orria ireki, kontaktatu teknikariarekin mesedez: " + e);
@@ -100,7 +100,7 @@ namespace TSB_Inbentarioa
                 System.Diagnostics.Process.Start(ander);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 MessageBox.Show("Ezin izan da web orria ireki, kontaktatu teknikariarekin mesedez: " + e);
@@ -118,7 +118,7 @@ namespace TSB_Inbentarioa
                 System.Diagnostics.Process.Start(lander);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 MessageBox.Show("Ezin izan da web orria ireki, kontaktatu teknikariarekin mesedez: " + e);
