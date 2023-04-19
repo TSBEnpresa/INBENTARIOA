@@ -59,7 +59,7 @@
             this.WO_BT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WO_BT.ForeColor = System.Drawing.Color.White;
             this.WO_BT.Location = new System.Drawing.Point(269, 37);
-            this.WO_BT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.WO_BT.Margin = new System.Windows.Forms.Padding(4);
             this.WO_BT.Name = "WO_BT";
             this.WO_BT.Size = new System.Drawing.Size(200, 41);
             this.WO_BT.TabIndex = 1;
@@ -83,7 +83,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(23, 128);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.MaximumSize = new System.Drawing.Size(160, 143);
             this.pictureBox1.MinimumSize = new System.Drawing.Size(160, 143);
             this.pictureBox1.Name = "pictureBox1";
@@ -91,6 +91,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Lander_Chamorro
             // 
@@ -108,7 +109,7 @@
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(309, 236);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.MaximumSize = new System.Drawing.Size(160, 143);
             this.pictureBox2.MinimumSize = new System.Drawing.Size(160, 143);
             this.pictureBox2.Name = "pictureBox2";
@@ -116,6 +117,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // ITXI_BT
             // 
@@ -123,7 +125,7 @@
             this.ITXI_BT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.ITXI_BT.ForeColor = System.Drawing.Color.White;
             this.ITXI_BT.Location = new System.Drawing.Point(160, 448);
-            this.ITXI_BT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ITXI_BT.Margin = new System.Windows.Forms.Padding(4);
             this.ITXI_BT.Name = "ITXI_BT";
             this.ITXI_BT.Size = new System.Drawing.Size(176, 33);
             this.ITXI_BT.TabIndex = 10;
@@ -137,7 +139,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(485, 494);
+            this.ClientSize = new System.Drawing.Size(503, 541);
             this.Controls.Add(this.ITXI_BT);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Lander_Chamorro);
@@ -147,7 +149,11 @@
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(503, 541);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(503, 541);
             this.Name = "Kredituak";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

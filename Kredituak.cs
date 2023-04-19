@@ -40,7 +40,7 @@ namespace TSB_Inbentarioa
         private void Kredituak_Load(object sender, EventArgs e)
         {
 
-
+            MessageBox.Show("Ixkutuko leiho bat topatu duzu!");
 
 
         }
@@ -88,6 +88,42 @@ namespace TSB_Inbentarioa
 
             }
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            string ander = "https://www.instagram.com/anderibanez_/";
+
+            try
+            {
+
+                System.Diagnostics.Process.Start(ander);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Ezin izan da web orria ireki, kontaktatu teknikariarekin mesedez: " + e);
+
+            }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            string lander = "https://www.instagram.com/lander_chamorro/";
+
+            try
+            {
+
+                System.Diagnostics.Process.Start(lander);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Ezin izan da web orria ireki, kontaktatu teknikariarekin mesedez: " + e);
+
+            }
         }
     }
 }

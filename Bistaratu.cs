@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
+using MySqlX.XDevAPI.Relational;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TSB_Inbentarioa
@@ -26,6 +27,8 @@ namespace TSB_Inbentarioa
 
         // KONEXIORAKO ERABILIKO DUGUN STRING-A || CONNECTION STRING
         static string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
+
+        // AUKERATUTAKO GAILUA BAJAN AL DAGOEN JAKITEKO || BAJA IS NULL
 
 
         public Bistaratu()
@@ -96,15 +99,20 @@ namespace TSB_Inbentarioa
             //Datuen aukera desabilitatu egiten du || It disable the DatuZehatza combo box
             DatuZehatza_CB.Enabled = false;
 
+            // CheckBox berrabiarazi || Restart CheckBox
+            BajaBAI_CheckB.Checked = false;
+            BajaEZ_CheckB.Checked = false;
+
         }
 
         private void Bidali_BT_Click(object sender, EventArgs e)
         {
             // Bistarazeko taula irakusteko.
-            Size = new Size(459, 483);
+            // Size = new Size(459, 483);
 
             // Konexioa ezartzeko string-a
             MySqlConnection connection = new MySqlConnection(connectionString);
+
             try
             {
                 // KONEXIOA IREKI || OPEN CONNECTION
@@ -135,15 +143,111 @@ namespace TSB_Inbentarioa
             // KONEXIOAREN STRING
             string selQuery = "";
 
-
             /* DATUAK BISTARATZEKO AUKERAK */
             if (Gailua_CB.SelectedItem == null)
             {
-                // GAILU MOTA AUKERATU GABE BALDIN BA DAGO.
-                MessageBox.Show("Mesedez, gailu mota aukeratzea beharrezkoa da.");
 
-                // LEIHOAREN TAMAINA BERE LEKURA BUELTATZEKO || RETURNS THE INITIAL SIZE OF THE WINDOW
-                Size = new Size(459, 280);
+                // DATU BASE BARROKO DATUAK ESKURATU || IT TAKES THE DATA FOR THE TABLES (DATABASE)
+                DataTable allData = new DataTable();
+
+
+                // BAJAN AL DAGOEN EDO EZ AUKERA EGITEKO || TO CHECK IF BAJA IS CHECKED
+                if (BajaBAI_CheckB.Checked && !BajaEZ_CheckB.Checked)
+                {
+                    
+                    for (int i = 0; i < Gailua_CB.Items.Count; i++)
+                    {
+                        // AUKERATUTAKO BALIOA EMAN || GIVE THE SELECTED VALUE
+                        gailuMota = Gailua_CB.Items[i].ToString();
+
+                        // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                        selQuery = "SELECT * FROM " + gailuMota + " WHERE baja = 'Bai';";
+
+                        // DATU BASETIK DATUAK BISTARATU || SHOW DATABASE DATA
+                        MySqlCommand command = new MySqlCommand(selQuery, connection);
+
+                        // DATU BASE BARROKO DATUAK ESKURATU || IT TAKES THE DATA FOR THE TABLES (DATABASE)
+                        DataTable table = new DataTable();
+
+                        // DATU BASE BARROKO DATUAK DataGridView-rea ADAPTATU || IT FILLS THE TABLE
+                        MySqlDataAdapter adaptadorea = new MySqlDataAdapter(command);
+                        adaptadorea.Fill(table);
+
+                        // DATUAK DataTable PRINTZIPALERA SARTU || ENTER THE ALL DATA IN THE DataTable
+                        allData.Merge(table);
+
+                    }
+
+                }
+                else if (BajaEZ_CheckB.Checked && !BajaBAI_CheckB.Checked)
+                {
+                    for (int i = 0; i < Gailua_CB.Items.Count; i++)
+                    {
+                        // AUKERATUTAKO BALIOA EMAN || GIVE THE SELECTED VALUE
+                        gailuMota = Gailua_CB.Items[i].ToString();
+
+                        // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                        selQuery = "SELECT * FROM " + gailuMota + " WHERE baja = 'Ez';";
+
+                        // DATU BASETIK DATUAK BISTARATU || SHOW DATABASE DATA
+                        MySqlCommand command = new MySqlCommand(selQuery, connection);
+
+                        // DATU BASE BARROKO DATUAK ESKURATU || IT TAKES THE DATA FOR THE TABLES (DATABASE)
+                        DataTable table = new DataTable();
+
+                        // DATU BASE BARROKO DATUAK DataGridView-rea ADAPTATU || IT FILLS THE TABLE
+                        MySqlDataAdapter adaptadorea = new MySqlDataAdapter(command);
+                        adaptadorea.Fill(table);
+
+                        // DATUAK DataTable PRINTZIPALERA SARTU || ENTER THE ALL DATA IN THE DataTable
+                        allData.Merge(table);
+
+                    }
+                }
+                else
+                {
+                    // GAILU MOTA AUKERATU GABE BALDIN BA DAGO.
+                    MessageBox.Show("Ez duzu ezer aukeratu, denak irakusten...");
+
+                    for (int i = 0; i < Gailua_CB.Items.Count; i++)
+                    {
+                        // AUKERATUTAKO BALIOA EMAN || GIVE THE SELECTED VALUE
+                        gailuMota = Gailua_CB.Items[i].ToString();
+
+                        // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                        selQuery = "SELECT * FROM " + gailuMota + " ;";
+
+                        // DATU BASETIK DATUAK BISTARATU || SHOW DATABASE DATA
+                        MySqlCommand command = new MySqlCommand(selQuery, connection);
+
+                        // DATU BASE BARROKO DATUAK ESKURATU || IT TAKES THE DATA FOR THE TABLES (DATABASE)
+                        DataTable table = new DataTable();
+
+                        // DATU BASE BARROKO DATUAK DataGridView-rea ADAPTATU || IT FILLS THE TABLE
+                        MySqlDataAdapter adaptadorea = new MySqlDataAdapter(command);
+                        adaptadorea.Fill(table);
+
+                        // DATUAK DataTable PRINTZIPALERA SARTU || ENTER THE ALL DATA IN THE DataTable
+                        allData.Merge(table);
+
+                    }
+
+                }
+
+                // DATU GUZTIAK DataGridView BARRUAN SARTU || IT SHOWS THE ALL DATA IN THE DataGridView
+                dataGridView1.DataSource = allData;
+
+                // ESTABLECER LA PROPIEDAD NULLVALUE DE DATAGRIDVIEW A "NULL"
+                dataGridView1.DefaultCellStyle.NullValue = "-";
+
+                // DataGridView-en BARRUAN DATORIK EZ BALDIN BA DAGO || IF THE TABLE IS EMPTY
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    MessageBox.Show("Ez dugu datorik, saiatu berriro.");
+                }
+
+
+
             }
             else
             {
@@ -153,8 +257,22 @@ namespace TSB_Inbentarioa
                     // AUKERATUTAKO BALIOA EMAN || GIVE THE SELECTED VALUE
                     gailuMota = Gailua_CB.SelectedItem.ToString();
 
-                    // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
-                    selQuery = "select * from " + gailuMota + ";";
+                    // BAJAN AL DAGOEN EDO EZ AUKERA EGITEKO || TO CHECK IF BAJA IS CHECKED
+                    if (BajaBAI_CheckB.Checked && !BajaEZ_CheckB.Checked)
+                    {
+                        // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                        selQuery = "select * from " + gailuMota + " where baja = 'Bai';";
+                    }
+                    else if (BajaEZ_CheckB.Checked && !BajaBAI_CheckB.Checked)
+                    {
+                        // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                        selQuery = "select * from " + gailuMota + " where baja = 'Ez';";
+                    }
+                    else
+                    {
+                        // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                        selQuery = "select * from " + gailuMota + ";";
+                    }
 
                     // DATUAK TAULAN SARTZEKO || INSERT THE DATA INTO THE TABLE
                     DatuakTaulanSartu(selQuery, connection);
@@ -164,7 +282,6 @@ namespace TSB_Inbentarioa
                 {   
                     if (kolumnak_CB.SelectedItem.ToString().Contains("erosketa_data"))
                     {
-
                         /* DATA AUKERATU BALDIN BA DUGU || IF DATA IS NOT NULL IT WILL ENTER HERE */
 
                         // SARTUTAKO DATAK LORTZEN || GET SELECTED DATE
@@ -177,8 +294,27 @@ namespace TSB_Inbentarioa
                         gailuMota = Gailua_CB.SelectedItem.ToString();
                         datuMota = kolumnak_CB.SelectedItem.ToString();
 
-                        // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
-                        selQuery = "select * from " + gailuMota + " where " + datuMota + " between '" + hasieraData + "' and '" + bukaeraData + "' ;";
+                        // BAJAN AL DAGOEN EDO EZ AUKERA EGITEKO || TO CHECK IF BAJA IS CHECKED
+                        if (BajaBAI_CheckB.Checked && !BajaEZ_CheckB.Checked)
+                        {
+                            // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                            selQuery = "select * from " + gailuMota + 
+                                " where baja = 'Bai' and " + datuMota + " between '" + hasieraData + "' and '" + bukaeraData + "' ;";
+                        }
+                        else if (BajaEZ_CheckB.Checked && !BajaBAI_CheckB.Checked)
+                        {
+                            // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                            selQuery = "select * from " + gailuMota +
+                                " where baja = 'Ez' and " + datuMota + " between '" + hasieraData + "' and '" + bukaeraData + "' ;";
+                        }
+                        else
+                        {
+                            // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                            selQuery = "select * from " + gailuMota +
+                                " where " + datuMota + " between '" + hasieraData + "' and '" + bukaeraData + "' ;";
+                        }
+
+                        
 
                         if (dt_HasieraData > dt_BukaeraData)
                         {
@@ -200,8 +336,25 @@ namespace TSB_Inbentarioa
                         gailuMota = Gailua_CB.SelectedItem.ToString();
                         datuMota = kolumnak_CB.SelectedItem.ToString();
 
-                        // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
-                        selQuery = "select " + datuMota + " from " + gailuMota + ";";
+                        // BAJAN AL DAGOEN EDO EZ AUKERA EGITEKO || TO CHECK IF BAJA IS CHECKED
+                        if (BajaBAI_CheckB.Checked && !BajaEZ_CheckB.Checked)
+                        {
+                            // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                            selQuery = "select distinct " + datuMota + " from " + gailuMota + 
+                                " where baja = 'Bai';";
+                        }
+                        else if (BajaEZ_CheckB.Checked && !BajaBAI_CheckB.Checked)
+                        {
+                            // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                            selQuery = "select distinct " + datuMota + " from " + gailuMota +
+                                " where baja = 'Ez';";
+                        }
+                        else
+                        {
+                            // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                            selQuery = "select distinct " + datuMota + " from " + gailuMota + ";";
+
+                        }
 
                         // DATUAK TAULAN SARTZEKO || INSERT THE DATA INTO THE TABLE
                         DatuakTaulanSartu(selQuery, connection);
@@ -220,6 +373,7 @@ namespace TSB_Inbentarioa
                         // "id_mintegia" DENEAN, BERRIZ ZENBAKIETARA BUELTAKO DUGU || RETURN THE "id_mintegia" NUMBER
                         if (datuMota.Equals("id_mintegia"))
                         { 
+
 
                             // MINTEGIAREN ZENBAKIA LORTZEKO || GET MINTEGIA NUMBER
                             string mintegiZenbakia = 
@@ -242,8 +396,24 @@ namespace TSB_Inbentarioa
 
                         }
 
-                        // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
-                        selQuery = "select * from " + gailuMota + " where " + datuMota + " = '" + datuZehatza + "' ;";
+                        // BAJAN AL DAGOEN EDO EZ AUKERA EGITEKO || TO CHECK IF BAJA IS CHECKED
+                        if (BajaBAI_CheckB.Checked && !BajaEZ_CheckB.Checked)
+                        {
+                            // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                            selQuery = "select * from " + gailuMota + 
+                                " where baja = 'Bai' and " + datuMota + " = '" + datuZehatza + "' ;";
+                        }
+                        else if (BajaEZ_CheckB.Checked && !BajaBAI_CheckB.Checked)
+                        {
+                            // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                            selQuery = "select * from " + gailuMota +
+                                " where baja = 'Ez' and " + datuMota + " = '" + datuZehatza + "' ;";
+                        }
+                        else
+                        {
+                            // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                            selQuery = "select * from " + gailuMota + " where " + datuMota + " = '" + datuZehatza + "' ;";
+                        }
 
                         // DATUAK TAULAN SARTZEKO || INSERT THE DATA INTO THE TABLE
                         DatuakTaulanSartu(selQuery, connection);
@@ -252,11 +422,11 @@ namespace TSB_Inbentarioa
                 }
             }
 
+            // ZENBAT LERRO DAUDEN KONTATZEN DUENA || COUNT ROW
+
+
+            // KONEXIOA ITXI || CLOSE CONNECTION
             connection.Close();
-
-            // BOTOIAK BERRABIARAZI, BEHIN DATUAK IRAKUSTERAKOAN || RESET THE BUTTONS
-            BotoiakBerrabiarazi();
-
 
         }
 
@@ -534,7 +704,7 @@ namespace TSB_Inbentarioa
             string kolumna = kolumnak_CB.SelectedItem.ToString();
 
             // SELECT KOLUMNA EGITEKO || SELECT TO DO THE QUERY
-            string selectQuery = "SELECT " + kolumna + " FROM " + gailua;
+            string selectQuery = "SELECT distinct " + kolumna + " FROM " + gailua;
 
             MySqlCommand command = new MySqlCommand(selectQuery, connection);
 
@@ -655,6 +825,9 @@ namespace TSB_Inbentarioa
             this.Close();
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
