@@ -99,6 +99,18 @@
     <Compile Include="Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
+    <Compile Include="WebOrria_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WebOrria_Form.Designer.cs">
+      <DependentUpon>WebOrria_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gehitu_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gehitu_Form.Designer.cs">
+      <DependentUpon>Gehitu_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kredituak.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +133,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Bistaratu.resx">
       <DependentUpon>Bistaratu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebOrria_Form.resx">
+      <DependentUpon>WebOrria_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gehitu_Form.resx">
+      <DependentUpon>Gehitu_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hasiera.resx">
       <DependentUpon>Hasiera.cs</DependentUpon>

@@ -19,19 +19,25 @@ namespace TSB_Inbentarioa
 
         private void WO_BT_Click(object sender, EventArgs e)
         {
-
-            string linka = "https://tsbenpresa.github.io/";
-
-            try { 
-
-                System.Diagnostics.Process.Start(linka);
-
-            }
-            catch (Exception)
+            // BISTARATUAREN KONSTRUKTOREARI HOTS EGITEKO || CALL THE BUILDER OF "Bistaratu"
+            using (WebOrria_Form WebOrria = new WebOrria_Form())
             {
+                try
+                {
+                    // Hide honekin, hasiera lehioa kentzea/ixkutatzea lortze deu.
+                    this.Hide();
 
-                MessageBox.Show("Ezin izan da web orria ireki, kontaktatu teknikariarekin mesedez: " + e);
+                    // Behin aurreko hide ejekutatzen denean, "ShowDialog"-ekin hurrengo leixue irikiko deu.
+                    WebOrria.ShowDialog();
 
+                    // Behin dana egin eta gero, ixkutun daon aplikaixue berriro irakutsiko dugu
+                    this.Show();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ezin izan da lehio ireki: " + ex.Message);
+                }
             }
 
 

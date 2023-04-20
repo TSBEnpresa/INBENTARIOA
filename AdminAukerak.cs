@@ -54,7 +54,27 @@ namespace TSB_Inbentarioa
 
         private void Alta_BT_Click(object sender, EventArgs e)
         {
+            // GAILUEN BAJA KUDEATZEKO LEIHOA IREKIKO DUGU || IT OPENS A WINDOW TO MANAGE DEVICE STATUS
+            using (GailuaGehitu_Form gehitu = new GailuaGehitu_Form())
+            {
 
+                try
+                {
+                    // Hide honekin, hasiera lehioa kentzea/ixkutatzea lortze deu.
+                    this.Hide();
+
+                    // Behin aurreko hide ejekutatzen denean, "ShowDialog"-ekin hurrengo leixue irikiko deu.
+                    gehitu.ShowDialog();
+
+                    // Behin dana egin eta gero, ixkutun daon aplikaixue berriro irakutsiko dugu
+                    this.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ezin izan da lehio ireki: " + ex.Message);
+                }
+
+            }
         }
 
         private void Baja_BT_Click(object sender, EventArgs e)
