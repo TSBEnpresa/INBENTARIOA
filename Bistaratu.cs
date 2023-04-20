@@ -107,8 +107,6 @@ namespace TSB_Inbentarioa
 
         private void Bidali_BT_Click(object sender, EventArgs e)
         {
-            // Bistarazeko taula irakusteko.
-            // Size = new Size(459, 483);
 
             // Konexioa ezartzeko string-a
             MySqlConnection connection = new MySqlConnection(connectionString);
@@ -330,34 +328,8 @@ namespace TSB_Inbentarioa
                     else if (DatuZehatza_CB.SelectedItem == null)
                     {
 
-                        /* DATA AUKERATU EZ BALDIN BA DUGU || IF DATA IS NULL IT WILL ENTER HERE */
-
-                        // AUKERATUTAKO BALIOAK EMAN || GIVE THE SELECTED VALUE
-                        gailuMota = Gailua_CB.SelectedItem.ToString();
-                        datuMota = kolumnak_CB.SelectedItem.ToString();
-
-                        // BAJAN AL DAGOEN EDO EZ AUKERA EGITEKO || TO CHECK IF BAJA IS CHECKED
-                        if (BajaBAI_CheckB.Checked && !BajaEZ_CheckB.Checked)
-                        {
-                            // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
-                            selQuery = "select distinct " + datuMota + " from " + gailuMota + 
-                                " where baja = 'Bai';";
-                        }
-                        else if (BajaEZ_CheckB.Checked && !BajaBAI_CheckB.Checked)
-                        {
-                            // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
-                            selQuery = "select distinct " + datuMota + " from " + gailuMota +
-                                " where baja = 'Ez';";
-                        }
-                        else
-                        {
-                            // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
-                            selQuery = "select distinct " + datuMota + " from " + gailuMota + ";";
-
-                        }
-
-                        // DATUAK TAULAN SARTZEKO || INSERT THE DATA INTO THE TABLE
-                        DatuakTaulanSartu(selQuery, connection);
+                        // DATU ZEHATZA EZ BADU AUKERATZEN HONERA SARTUKO DA || SELECT DATU ZEHATZA
+                        MessageBox.Show("Datu zehatz bat aukeratu behar duzu, mesedez berriro saiatu.");
 
                     }
                     else
