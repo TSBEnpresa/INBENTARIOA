@@ -15,7 +15,7 @@ namespace TSB_Inbentarioa
     {
 
         // KONEXIORAKO ERABILIKO DUGUN STRING-A || CONNECTION STRING
-        static string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
+        static string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=lanchajim;";
 
         public Baja()
         {
@@ -694,7 +694,34 @@ namespace TSB_Inbentarioa
 
         private void BajaEman_BT_Click(object sender, EventArgs e)
         {
+            //Konexioa ezartzeko string-a || String to do the connection
+            MySqlConnection connection = new MySqlConnection(connectionString);
 
+            //Konexioa ireki || Open connection
+            connection.Open();
+
+            //Zutabea aukeratzeko || To select the row we want
+            DataGridViewRow rowSelect = dataGridView1.SelectedRows[0];
+            
+            string gailua = Gailua_CB.SelectedItem.ToString();
+
+            //Kontsulta sortu update-a egiteko || Create the statement to do the update query
+            string query = "UPDATE  " + gailua + " SET baja = 'Bai' WHERE serie_zbk = @serie_zbk";
+
+            //Komandoa sortzen degu gero exekutatzeko || It creates the command to excute
+            MySqlCommand command = new MySqlCommand(query, connection);
+
+            //Parametroak balioekin gehitu || Add parameters with value
+            command.Parameters.AddWithValue("@serie_zbk", rowSelect.Cells["serie_zbk"].Value);
+
+            //Komandoa exekutatu egiten du || It executes the command
+            command.ExecuteNonQuery();
+
+            //Konexioa itxi || Close connection
+            connection.Close();
+
+            //Zutabean "Bai" balorea jartzen du || In the row it puts the value "Bai"
+            rowSelect.Cells["baja"].Value = "Bai";
         }
     }
 }

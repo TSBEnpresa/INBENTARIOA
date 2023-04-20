@@ -26,7 +26,7 @@ namespace TSB_Inbentarioa
         bool admin = false;
 
         // KONEXIORAKO ERABILIKO DUGUN STRING-A || CONNECTION STRING
-        static string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
+        static string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=lanchajim;";
 
         public Bistaratu()
         {
