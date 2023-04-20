@@ -26,7 +26,10 @@ namespace TSB_Inbentarioa
 
         private void GailuaGehitu_Form_Load(object sender, EventArgs e)
         {
+            // ZEIN TAULA DAUDEN DATU BASEAN KARGATUKO DUGU || BURDEN TABLE ROW
+            TaulaIzenakLortu();
 
+            pictureBox1.Enabled = true;
         }
 
         private void TaulaIzenakLortu()
@@ -84,16 +87,16 @@ namespace TSB_Inbentarioa
 
         private void Gailua_CB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Gailuren bat, aukeratzerakoan, hurrengo combobox-a aktibatuko den edo ez, esaten diogu.
+            /*// Gailuren bat, aukeratzerakoan, hurrengo combobox-a aktibatuko den edo ez, esaten diogu.
             // When we select the Gailu combo box, the next one will be available, if we dont select any gailu it will be disabled
-            /*if (Gailua_CB.SelectedItem != null)
+            if (Gailua_CB.SelectedItem != null)
             {
                 kolumnak_CB.Enabled = true;
             }
             else
             {
                 kolumnak_CB.Enabled = false;
-            }*/
+            }
 
 
             // Zein taula aukeratu dugun jakiteko. | Here we select the table that we want.
@@ -146,9 +149,23 @@ namespace TSB_Inbentarioa
 
                     break;
 
-            }
+            }*/
         }
 
-       
+        private void txt_SerieZbk_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            // LEIHO HAU ITXI || CLOSE WINDOW
+            this.Close();
+        }
     }
 }
