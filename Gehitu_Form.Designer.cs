@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GailuaGehitu_Form));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gGehitu_TXT = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Gailua_CB = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,6 +57,27 @@
             this.gGehitu_TXT.TabIndex = 29;
             this.gGehitu_TXT.Text = "GAILUA GEHITU";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(50, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "Gailu Motak";
+            // 
+            // Gailua_CB
+            // 
+            this.Gailua_CB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Gailua_CB.Font = new System.Drawing.Font("Yu Gothic UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gailua_CB.FormattingEnabled = true;
+            this.Gailua_CB.Location = new System.Drawing.Point(49, 98);
+            this.Gailua_CB.Name = "Gailua_CB";
+            this.Gailua_CB.Size = new System.Drawing.Size(234, 33);
+            this.Gailua_CB.TabIndex = 33;
+            this.Gailua_CB.SelectedIndexChanged += new System.EventHandler(this.Gailua_CB_SelectedIndexChanged);
+            // 
             // GailuaGehitu_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -63,6 +86,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(904, 545);
+            this.Controls.Add(this.Gailua_CB);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.gGehitu_TXT);
             this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
@@ -73,6 +98,7 @@
             this.Name = "GailuaGehitu_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TSB INBENTARIOA | Gailua Gehitu";
+            this.Load += new System.EventHandler(this.GailuaGehitu_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -83,5 +109,7 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label gGehitu_TXT;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox Gailua_CB;
     }
 }

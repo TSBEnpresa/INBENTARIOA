@@ -15,12 +15,16 @@ namespace TSB_Inbentarioa
     {
         // ZEIN ERABILTZAILE ERABILIKO DUGUN GORDEKO DUGUN PARAMETROA.
         string erabiltzailea;
- 
-        public AdminAukerak(string erabil)
+
+        // KONEXIORAKO ERABILIKO DUGUN STRING-A || CONNECTION STRING
+        static string connectionString;
+
+        public AdminAukerak(string erabil, string connection)
         {
             InitializeComponent();
 
             erabiltzailea = erabil;
+            connectionString = connection;
 
         }
 
@@ -55,7 +59,7 @@ namespace TSB_Inbentarioa
         private void Alta_BT_Click(object sender, EventArgs e)
         {
             // GAILUEN BAJA KUDEATZEKO LEIHOA IREKIKO DUGU || IT OPENS A WINDOW TO MANAGE DEVICE STATUS
-            using (GailuaGehitu_Form gehitu = new GailuaGehitu_Form())
+            using (GailuaGehitu_Form gehitu = new GailuaGehitu_Form(connectionString))
             {
 
                 try
@@ -80,7 +84,7 @@ namespace TSB_Inbentarioa
         private void Baja_BT_Click(object sender, EventArgs e)
         {
             // GAILUEN BAJA KUDEATZEKO LEIHOA IREKIKO DUGU || IT OPENS A WINDOW TO MANAGE DEVICE STATUS
-            using (Baja baja = new Baja())
+            using (Baja baja = new Baja(connectionString))
             {
 
                 try
@@ -108,7 +112,7 @@ namespace TSB_Inbentarioa
             bool admin = true;
 
             // BISTARATUAREN KONSTRUKTOREARI HOTS EGITEKO || CALL THE BUILDER OF "Bistaratu"
-            using (Bistaratu bista = new Bistaratu(admin))
+            using (Bistaratu bista = new Bistaratu(admin, connectionString))
             {
                 try
                 {

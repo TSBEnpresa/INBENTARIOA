@@ -26,21 +26,24 @@ namespace TSB_Inbentarioa
         bool admin = false;
 
         // KONEXIORAKO ERABILIKO DUGUN STRING-A || CONNECTION STRING
-        static string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
+        static string connectionString;
 
-        public Bistaratu()
+        public Bistaratu(string connection)
         {
             // BISTARATURI HASIERA EMATEKO || START BISTARATU
             InitializeComponent();
+
+            connectionString = connection;
         }
 
-        public Bistaratu(bool administrador)
+        public Bistaratu(bool administrador, string connection)
         {
             InitializeComponent();
 
             // Administradorea baldin bada, programak aukera diferenteak izango ditu.
             // If he's an administrator, the program will have different options.
             admin = administrador;
+            connectionString = connection;
 
         }
 

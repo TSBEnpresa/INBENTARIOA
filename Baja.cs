@@ -15,11 +15,13 @@ namespace TSB_Inbentarioa
     {
 
         // KONEXIORAKO ERABILIKO DUGUN STRING-A || CONNECTION STRING
-        static string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
+        static string connectionString;
 
-        public Baja()
+        public Baja(string connection)
         {
             InitializeComponent();
+
+            connectionString = connection;
         }
 
         private void Baja_Load(object sender, EventArgs e)
@@ -70,9 +72,6 @@ namespace TSB_Inbentarioa
 
         private void Bidali_BT_Click(object sender, EventArgs e)
         {
-            // Bistarazeko taula irakusteko.
-            // Size = new Size(459, 483);
-
             // Konexioa ezartzeko string-a
             MySqlConnection connection = new MySqlConnection(connectionString);
 
@@ -120,7 +119,7 @@ namespace TSB_Inbentarioa
                     gailuMota = Gailua_CB.Items[i].ToString();
 
                     // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
-                    selQuery = "SELECT * FROM " + gailuMota + " ;";
+                    selQuery = "SELECT * FROM " + gailuMota + " WHERE baja = 'Ez';";
 
                     // DATU BASETIK DATUAK BISTARATU || SHOW DATABASE DATA
                     MySqlCommand command = new MySqlCommand(selQuery, connection);
@@ -159,7 +158,7 @@ namespace TSB_Inbentarioa
                     gailuMota = Gailua_CB.SelectedItem.ToString();
 
                     // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
-                    selQuery = "select * from " + gailuMota + ";";
+                    selQuery = "SELECT * FROM " + gailuMota + " WHERE baja = 'Ez';";
 
                     // DATUAK TAULAN SARTZEKO || INSERT THE DATA INTO THE TABLE
                     DatuakTaulanSartu(selQuery, connection);
@@ -183,7 +182,7 @@ namespace TSB_Inbentarioa
 
                         // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
                         selQuery = "select * from " + gailuMota +
-                            " where " + datuMota + " between '" + hasieraData + "' and '" + bukaeraData + "' ;";
+                            " where baja = 'Ez' and " + datuMota + " between '" + hasieraData + "' and '" + bukaeraData + "' ;";
 
                         if (dt_HasieraData > dt_BukaeraData)
                         {
@@ -220,7 +219,7 @@ namespace TSB_Inbentarioa
 
                             // MINTEGIAREN ZENBAKIA LORTZEKO || GET MINTEGIA NUMBER
                             string mintegiZenbakia =
-                                "select " + datuMota + " from mintegitaula where izena = '" + datuZehatza + "';";
+                                "select " + datuMota + " from mintegitaula where baja = 'Ez' and izena = '" + datuZehatza + "';";
 
                             // DATU BASETIK DATUAK BISTARATU || SHOW DATABASE DATA
                             MySqlCommand command = new MySqlCommand(mintegiZenbakia, connection);
@@ -240,7 +239,7 @@ namespace TSB_Inbentarioa
                         }
 
                         // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
-                        selQuery = "select * from " + gailuMota + " where " + datuMota + " = '" + datuZehatza + "' ;";
+                        selQuery = "select * from " + gailuMota + " where baja = 'Ez' and " + datuMota + " = '" + datuZehatza + "' ;";
 
                         // DATUAK TAULAN SARTZEKO || INSERT THE DATA INTO THE TABLE
                         DatuakTaulanSartu(selQuery, connection);

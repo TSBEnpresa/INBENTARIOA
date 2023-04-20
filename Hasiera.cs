@@ -13,6 +13,10 @@ namespace TSB_Inbentarioa
 {
     public partial class Hasiera_Form : Form
     {
+
+        // KONEXIORAKO ERABILIKO DUGUN STRING-A || CONNECTION STRING
+        static string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=Ander123;";
+
         public Hasiera_Form()
         {
             InitializeComponent();
@@ -56,7 +60,7 @@ namespace TSB_Inbentarioa
                     {
 
                         // AdminAukerak duen konstruktoreari hotsein.
-                        using (AdminAukerak admin = new AdminAukerak(erabiltzailea))
+                        using (AdminAukerak admin = new AdminAukerak(erabiltzailea, connectionString))
                         {
                             try
                             {
@@ -91,7 +95,7 @@ namespace TSB_Inbentarioa
                     {
 
                        // Bistaratuaren kontruktoreari hots egiteko.
-                        using (Bistaratu bista = new Bistaratu())
+                        using (Bistaratu bista = new Bistaratu(connectionString))
                         {
                             try
                             {
