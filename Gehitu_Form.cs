@@ -56,7 +56,9 @@ namespace TSB_Inbentarioa
 
             // Kontsulta exekutatu eta taularen izenak lortu | Execute the query and retrieve the table names
             MySqlDataReader reader = command.ExecuteReader();
+
             List<string> tableNames = new List<string>();
+
             while (reader.Read())
             {
 
@@ -87,69 +89,59 @@ namespace TSB_Inbentarioa
 
         private void Gailua_CB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*// Gailuren bat, aukeratzerakoan, hurrengo combobox-a aktibatuko den edo ez, esaten diogu.
+            // Gailuren bat, aukeratzerakoan, hurrengo combobox-a aktibatuko den edo ez, esaten diogu.
             // When we select the Gailu combo box, the next one will be available, if we dont select any gailu it will be disabled
-            if (Gailua_CB.SelectedItem != null)
-            {
-                kolumnak_CB.Enabled = true;
-            }
-            else
-            {
-                kolumnak_CB.Enabled = false;
-            }
-
-
-            // Zein taula aukeratu dugun jakiteko. | Here we select the table that we want.
             string taulaIzena;
-
+            
             switch (Gailua_CB.SelectedItem)
             {
 
 
                 case "inprimagailuak":
 
-                    // Inprimagailuak aukeratzerakoan beteko diren datuak | The information that it will be filled when we select inprimagailuak
+                    // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
+                    pictureBox2.Image = Image.FromFile("../../Diseinua/GailuMotak/Inprimagailua.png");
+
+                    //Inprimagailuak aukeratzerakoan beteko diren datuak | The information that it will be filled when we select inprimagailuak
                     taulaIzena = "inprimagailuak";
-                    ColumnakLortu(taulaIzena);
+                    
 
                     break;
                 case "mahaigainekoak":
 
-                    // Mahaigainekoak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select mahaiganekoak
+                    //Mahaigainekoak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select mahaiganekoak
                     taulaIzena = "mahaigainekoak";
-                    ColumnakLortu(taulaIzena);
+                    
 
                     break;
                 case "mobilak":
 
-                    // Mobilak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select mobilak
+                    //Mobilak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select mobilak
                     taulaIzena = "mobilak";
-                    ColumnakLortu(taulaIzena);
 
                     break;
                 case "monitoreak":
 
-                    // Monitoreak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select monitoreak
+                    //Monitoreak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select monitoreak
                     taulaIzena = "monitoreak";
-                    ColumnakLortu(taulaIzena);
 
                     break;
                 case "portatilak":
 
-                    // Portatilak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select portatilak
+                    //Portatilak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select portatilak
                     taulaIzena = "portatilak";
-                    ColumnakLortu(taulaIzena);
 
                     break;
                 case "telebistak":
 
-                    // Telebistak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select telebistak
+                    //Telebistak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select telebistak
                     taulaIzena = "telebistak";
-                    ColumnakLortu(taulaIzena);
 
                     break;
 
-            }*/
+            }
+
+
         }
 
         private void txt_SerieZbk_TextChanged(object sender, EventArgs e)

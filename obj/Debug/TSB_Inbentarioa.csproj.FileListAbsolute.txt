@@ -139,3 +139,4 @@ C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inb
 H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.Baja.resources
 H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.GailuaGehitu_Form.resources
 H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.WebOrria_Form.resources
+D:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.GailuaGehitu_Form.resources
