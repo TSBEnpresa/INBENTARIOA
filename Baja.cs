@@ -34,11 +34,10 @@ namespace TSB_Inbentarioa
 
         private void Reset_BT_Click(object sender, EventArgs e)
         {
-            // LEIHOAREN TAMAINA BERRIZ BERE LEKURA BUELTATU || RETURNS THE INITIAL SIZE OF THE WINDOW
-            Size = new Size(459, 280);
-
             // BOTOIAK EDO AUKERAK BERRABIARAZI || RESET BUTTOMS
             BotoiakBerrabiarazi();
+
+            BajaEman_BT.Enabled = false;
 
             // BISTARATZE LEIHOA GARBITU EGITEN DU || IT CLEANS THE DataGridView WINDOW
             dataGridView1.DataSource = null;
@@ -67,6 +66,9 @@ namespace TSB_Inbentarioa
 
             // BERRABIARAZI KONTAGAILUA || RESET ROW COUNT
             ZKop_TXT.Text = "ZUTABE KOPURUA: 0";
+
+            // BERRABIARAZI BAJA BOTOIA || BAJA BUTTOM RESET
+            BajaEman_BT.Enabled = false;
 
         }
 
@@ -662,65 +664,56 @@ namespace TSB_Inbentarioa
         {
 
             // 
-            if (Gailua_CB.SelectedItem == null || Gailua_CB.SelectedItem != null && kolumnak_CB.SelectedItem == null)
-            {
-
-                if (dataGridView1.SelectedRows.Count == 0)
-                {
-                    BajaEman_BT.Enabled = false;
-                }
-                else
-                {
-                    BajaEman_BT.Enabled = true;
-                }
-
-            }
-            else if (kolumnak_CB.SelectedItem != null && DatuZehatza_CB.SelectedItem == null && HasieraDataTime.Enabled == false)
-            {
-
-                BajaEman_BT.Enabled = false;
-
-            }
-            else 
-            {
-
-                BajaEman_BT.Enabled = true;
-
-            }
+            
 
                 
         }
 
         private void BajaEman_BT_Click(object sender, EventArgs e)
         {
-            //Konexioa ezartzeko string-a || String to do the connection
-            MySqlConnection connection = new MySqlConnection(connectionString);
 
-            //Konexioa ireki || Open connection
-            connection.Open();
+            try
+            {
+                //Konexioa ezartzeko string-a || String to do the connection
+                MySqlConnection connection = new MySqlConnection(connectionString);
 
-            //Zutabea aukeratzeko || To select the row we want
-            DataGridViewRow rowSelect = dataGridView1.SelectedRows[0];
+                //Konexioa ireki || Open connection
+                connection.Open();
+
+                //Zutabea aukeratzeko || To select the row we want
+                DataGridViewRow rowSelect = dataGridView1.SelectedRows[0];
             
-            string gailua = Gailua_CB.SelectedItem.ToString();
+                string gailua = Gailua_CB.SelectedItem.ToString();
 
-            //Kontsulta sortu update-a egiteko || Create the statement to do the update query
-            string query = "UPDATE  " + gailua + " SET baja = 'Bai' WHERE serie_zbk = @serie_zbk";
+                //Kontsulta sortu update-a egiteko || Create the statement to do the update query
+                string query = "UPDATE  " + gailua + " SET baja = 'Bai' WHERE serie_zbk = @serie_zbk";
 
-            //Komandoa sortzen degu gero exekutatzeko || It creates the command to excute
-            MySqlCommand command = new MySqlCommand(query, connection);
+                //Komandoa sortzen degu gero exekutatzeko || It creates the command to excute
+                MySqlCommand command = new MySqlCommand(query, connection);
 
-            //Parametroak balioekin gehitu || Add parameters with value
-            command.Parameters.AddWithValue("@serie_zbk", rowSelect.Cells["serie_zbk"].Value);
+                //Parametroak balioekin gehitu || Add parameters with value
+                command.Parameters.AddWithValue("@serie_zbk", rowSelect.Cells["serie_zbk"].Value);
 
-            //Komandoa exekutatu egiten du || It executes the command
-            command.ExecuteNonQuery();
+                //Komandoa exekutatu egiten du || It executes the command
+                command.ExecuteNonQuery();
 
-            //Konexioa itxi || Close connection
-            connection.Close();
+                //Konexioa itxi || Close connection
+                connection.Close();
 
-            //Zutabean "Bai" balorea jartzen du || In the row it puts the value "Bai"
-            rowSelect.Cells["baja"].Value = "Bai";
+                //Zutabean "Bai" balorea jartzen du || In the row it puts the value "Bai"
+                rowSelect.Cells["baja"].Value = "Bai";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ezin izan da baja eman gailu bati, ez dago ezer aukeratuta, mesedez baja eman nahi diozun gailua ongi aukeratu");
+
+                throw;
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            BajaEman_BT.Enabled = true;
         }
     }
 }

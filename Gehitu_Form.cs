@@ -29,6 +29,9 @@ namespace TSB_Inbentarioa
             // ZEIN TAULA DAUDEN DATU BASEAN KARGATUKO DUGU || BURDEN TABLE ROW
             TaulaIzenakLortu();
 
+            // MINTEGIA ComboBox-a BETE || FILL MINTEGIA CB
+            MintegiaCB_Betetzen();
+
             pictureBox1.Enabled = true;
         }
 
@@ -91,9 +94,6 @@ namespace TSB_Inbentarioa
 
         private void Gailua_CB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            // MINTEGIA ComboBox-a BETE || FILL MINTEGIA CB
-            MintegiaCB_Betetzen();
 
             // ZERBAIT AUKERATZEN DUGUN BAKOITZEAN HASIERATIK JARRIKO DUGU || RESET "PROGRAM"
             HasieranBezalaJarri();
@@ -127,12 +127,16 @@ namespace TSB_Inbentarioa
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
                     pictureBox2.Image = Image.FromFile("../../Diseinua/GailuMotak/Mobilak.png");
 
+                    MobilaOpzioak();
+
                     break;
 
                 case "monitoreak":
 
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
                     pictureBox2.Image = Image.FromFile("../../Diseinua/GailuMotak/Monitorea.png");
+
+                    MonitorOpzioak();
 
                     break;
 
@@ -141,6 +145,8 @@ namespace TSB_Inbentarioa
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
                     pictureBox2.Image = Image.FromFile("../../Diseinua/GailuMotak/Portatila.png");
 
+                    PortatilOpzioak();
+
                     break;
 
                 case "telebistak":
@@ -148,40 +154,12 @@ namespace TSB_Inbentarioa
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
                     pictureBox2.Image = Image.FromFile("../../Diseinua/GailuMotak/Telebista.png");
 
+                    TelebistaOpzioak();
+
                     break;
             }
 
 
-        }
-
-        private void HasieranBezalaJarri()
-        {
-            Berrabiarazi();
-
-            // FUNTZIO HONEKIN LORTZEN DUGUNA, ZUK APLIKAZIOA IREKI DUZUNEAN BEZALA USTEA.
-            txt_SerieZbk.Enabled = false;
-            txt_Marka.Enabled = false;
-            txt_Modeloa.Enabled = false;
-            dtp_ErosketaData.Enabled = false;
-            cb_Mintegia.Enabled = false;
-            txt_Desc.Enabled = false;
-
-            // INPRESORA || PRINTER
-            /*if (cb_SEragileaEdoInprMota.Visible == true)
-            {
-                // ComboBox
-                cb_SEragileaEdoInprMota.Visible = false;
-                cb_SEragileaEdoInprMota.Items.Clear();
-                
-                // LABEL
-                Label_SistemaEdoInprMota.Visible = false;
-            }
-            else
-            {
-
-            }*/
-
-            
         }
 
         private void MintegiaCB_Betetzen()
@@ -242,6 +220,7 @@ namespace TSB_Inbentarioa
             cb_Mintegia.Enabled = true;
             txt_Desc.Enabled = true;
 
+
             // RESET BOTOIA AKTIBATU || ACTIVATE RESET BUTTOM
             bt_Reset.Enabled = true;
 
@@ -259,6 +238,7 @@ namespace TSB_Inbentarioa
 
         private void MahaigainekoOpzioak()
         {
+
             // BEHAR DITUEN BOTOIAK KARGATU || LOAD NEEDED BUTTOMS
             txt_SerieZbk.Enabled = true;
             txt_Marka.Enabled = true;
@@ -270,7 +250,7 @@ namespace TSB_Inbentarioa
             // RESET BOTOIA AKTIBATU || ACTIVATE RESET BUTTOM
             bt_Reset.Enabled = true;
 
-            // MAHAIGAINEKO MOTAK BETETZEN || LOAD PRINTER TYPES
+            // SISTEMA MOTAK BETETZEN || LOAD SISTEM TYPES
             string[] sEragilea = { "Windows 11", "Windows 10", "Windows 7/8.1", "macOS", "Linux" };
             cb_SEragileaEdoInprMota.Items.AddRange(sEragilea);
 
@@ -279,14 +259,184 @@ namespace TSB_Inbentarioa
 
             Label_SistemaEdoInprMota.Text = "Sistema Eragilea";
 
-            // MAHAIGAINEKO MOTAK AKTIBATU || ACTIVATE PRINTER TYPES OPTIONS
+            // MAHAIGAINEKO MOTAK AKTIBATU || ACTIVATE PC TYPES OPTIONS
+            Label_SistemaEdoInprMota.Visible = true;
             cb_SEragileaEdoInprMota.Visible= true;
+
+            label_Puz.Visible = true;
             txt_Puz.Visible = true;
+
+            label_RAM.Visible = true;
             cb_RamKantitatea.Visible = true;
+
+            label_RMotaEdoReso.Visible = true;
             cb_RMotaEdoReso.Visible = true;
+
+            label_MKantitatea.Visible = true;
             cb_MKantitatea.Visible = true;
 
         }
+
+        private void MobilaOpzioak()
+        {
+
+            // BEHAR DITUEN BOTOIAK KARGATU || LOAD NEEDED BUTTOMS
+            txt_SerieZbk.Enabled = true;
+            txt_Marka.Enabled = true;
+            txt_Modeloa.Enabled = true;
+            dtp_ErosketaData.Enabled = true;
+            cb_Mintegia.Enabled = true;
+            txt_Desc.Enabled = true;
+
+            // RESET BOTOIA AKTIBATU || ACTIVATE RESET BUTTOM
+            bt_Reset.Enabled = true;
+
+            // SISTEMA MOTAK BETETZEN || LOAD SYSTEM TYPES
+            string[] sEragilea = { "Android", "iOS", "Windows Phone", "BlackBerry OS", "Tizen", "Firefox OS", "Ubuntu Touch", "Sailfish OS", "KaiOS", "HarmonyOS" };
+            cb_SEragileaEdoInprMota.Items.AddRange(sEragilea);
+
+            string[] pantailaTamaina = { "3.5\"", "4\"", "4.5\"", "5\"", "5.5\"", "6\"", "6.5\"", "7\"", "7.5\"", "8\"", "8.5\"", "9\"", "9.5\"", "10\"" };
+            cb_Pantaila.Items.AddRange(pantailaTamaina);
+
+            Label_SistemaEdoInprMota.Text = "Sistema Eragilea";
+
+            // MOBILA MOTAK AKTIBATU || ACTIVATE PHONE TYPES OPTIONS
+            Label_SistemaEdoInprMota.Visible = true;
+            cb_SEragileaEdoInprMota.Visible = true;
+
+            cb_Pantaila.Visible = true;
+            label_Pantaila.Visible = true;
+
+            cb_RamKantitatea.Visible = true;
+            label_RAM.Visible = true;
+
+            cb_Bateria.Visible = true;
+            label_Bateria.Visible = true;
+
+            label_Puz.Visible = true;
+            txt_Puz.Visible = true;
+
+            label_MKantitatea.Visible = true;
+            cb_MKantitatea.Visible = true;
+
+        }
+
+        private void MonitorOpzioak() 
+        {
+
+            // BEHAR DITUEN BOTOIAK KARGATU || LOAD NEEDED BUTTOMS
+            txt_SerieZbk.Enabled = true;
+            txt_Marka.Enabled = true;
+            txt_Modeloa.Enabled = true;
+            dtp_ErosketaData.Enabled = true;
+            cb_Mintegia.Enabled = true;
+            txt_Desc.Enabled = true;
+
+
+            // RESET BOTOIA AKTIBATU || ACTIVATE RESET BUTTOM
+            bt_Reset.Enabled = true;
+
+            // MONITORE PANTAILA MOTAK BETETZEN || LOAD RESOLUTION TYPES
+            string[] pPulgadak = { "19\"", "21\"", "22\"", "24\"", "27\"", "32\"", "40\"", "42\"", "43\"", "50\"" };
+            cb_Pantaila.Items.AddRange(pPulgadak);
+
+            // MONITORE MOTAK AKTIBATU || ACTIVATE MONITORE TYPES OPTIONS
+            cb_Pantaila.Visible = true;
+            label_Pantaila.Visible = true;
+
+        }
+
+        private void PortatilOpzioak() 
+        {
+
+            // BEHAR DITUEN BOTOIAK KARGATU || LOAD NEEDED BUTTOMS
+            txt_SerieZbk.Enabled = true;
+            txt_Marka.Enabled = true;
+            txt_Modeloa.Enabled = true;
+            dtp_ErosketaData.Enabled = true;
+            cb_Mintegia.Enabled = true;
+            txt_Desc.Enabled = true;
+
+
+            // RESET BOTOIA AKTIBATU || ACTIVATE RESET BUTTOM
+            bt_Reset.Enabled = true;
+
+            // MONITORE PANTAILA MOTAK BETETZEN || LOAD RESOLUTION TYPES
+            string[] sEragilea = { "Windows 11", "Windows 10", "Windows 7/8.1", "macOS", "Linux" };
+            cb_SEragileaEdoInprMota.Items.AddRange(sEragilea);
+
+            string[] rMota = { "DDR", "DDR2", "DDR3", "DDR4", "DDR5" };
+            cb_RMotaEdoReso.Items.AddRange(rMota);
+
+            Label_SistemaEdoInprMota.Text = "Sistema Eragilea";
+
+            string[] pPulgadak = { "10\"", "11\"", "12\"", "13\"", "14\"", "15\"", "16\"", "17\"", "18\"", "19\"", "20\"" };
+            cb_Pantaila.Items.AddRange(pPulgadak);
+
+            // MONITORE MOTAK AKTIBATU || ACTIVATE MONITORE TYPES OPTIONS
+            cb_Pantaila.Visible = true;
+            label_Pantaila.Visible = true;
+
+            cb_SEragileaEdoInprMota.Visible = true;
+            Label_SistemaEdoInprMota.Visible = true;
+
+            cb_RMotaEdoReso.Visible = true;
+            label_RMotaEdoReso.Visible = true;
+
+            txt_Puz.Visible = true;
+            label_Puz.Visible = true;
+
+            cb_RamKantitatea.Visible = true;
+            label_RAM.Visible = true;
+
+            cb_RMotaEdoReso.Visible = true;
+            label_RMotaEdoReso.Visible = true;
+
+            cb_MKantitatea.Visible = true;
+            label_MKantitatea.Visible = true;
+
+        }
+
+        private void TelebistaOpzioak() 
+        {
+            // BEHAR DITUEN BOTOIAK KARGATU || LOAD NEEDED BUTTOMS
+            txt_SerieZbk.Enabled = true;
+            txt_Marka.Enabled = true;
+            txt_Modeloa.Enabled = true;
+            dtp_ErosketaData.Enabled = true;
+            cb_Mintegia.Enabled = true;
+            txt_Desc.Enabled = true;
+
+
+            // RESET BOTOIA AKTIBATU || ACTIVATE RESET BUTTOM
+            bt_Reset.Enabled = true;
+
+            // INPRESORA MOTAK BETETZEN || LOAD PRINTER TYPES
+            string[] pTamaina = { "22\"", "24\"", "28\"", "32\"", "40\"", "42\"", "43\"", "48\"", "49\"", "50\"", 
+                                    "55\"", "60\"", "65\"", "70\"", "75\"", "77\"", "80\"", "85\"" };
+            cb_Pantaila.Items.AddRange(pTamaina);
+
+            string[] resoluciones = { "1280x720", "1920x1080", "2048x1080", "2560x1440", "3840x2160", "4096x2160", "7680x4320" };
+            cb_RMotaEdoReso.Items.AddRange(resoluciones);
+
+            string[] SEragilea = { "Android TV", "WebOS", "Saphi", "Tizen", "VIDAA", "tvOS" };
+
+            Label_SistemaEdoInprMota.Text = "Sistema Eragilea";
+
+            // INPRESORA MOTAK AKTIBATU || ACTIVATE PRINTER TYPES OPTIONS
+            cb_SEragileaEdoInprMota.Visible = true;
+            Label_SistemaEdoInprMota.Visible = true;
+            
+            cb_Pantaila.Visible = true;
+            label_Pantaila.Visible = true;
+
+            cb_RMotaEdoReso.Visible = true;
+            label_RMotaEdoReso.Visible = true;
+
+
+
+        }
+
 
 
 
@@ -313,6 +463,7 @@ namespace TSB_Inbentarioa
 
 
 
+
         private void bt_Reset_Click(object sender, EventArgs e)
         {
             // BERRABIARAZTEKO FUNTZIOA EJEKUTATU || EXECUTE RESET FUNCTION
@@ -331,12 +482,81 @@ namespace TSB_Inbentarioa
             cb_Mintegia.SelectedItem = null;
 
             cb_Pantaila.SelectedItem = null;
-            cb_SEragileaEdoInprMota = null;
+            cb_SEragileaEdoInprMota.SelectedItem = null;
             cb_RMotaEdoReso.SelectedItem = null;
             txt_Puz.ResetText();
             cb_RamKantitatea.SelectedItem = null;
             cb_MKantitatea.SelectedItem = null;
             cb_Bateria.SelectedItem = null;
         }
+
+        private void HasieranBezalaJarri()
+        {
+            Berrabiarazi();
+
+            // FUNTZIO HONEKIN LORTZEN DUGUNA, ZUK APLIKAZIOA IREKI DUZUNEAN BEZALA USTEA || RESET OPTIONS
+
+            // PANTAILA RESETEATZEKO || RESET PANTAILA OPTIONS
+            if (cb_Pantaila.Visible == true)
+            {
+                cb_Pantaila.Items.Clear();
+                cb_Pantaila.Visible = false;
+                label_Pantaila.Visible = false;
+
+            }
+
+            // INPRIMAGAILU MOTA EDO SISTEMA ERAGILEA RESETEATZEKO || RESET OS OR PRINTER TYPE
+            if (cb_SEragileaEdoInprMota.Visible == true || cb_SEragileaEdoInprMota.Items.Count > 0)
+            {
+                cb_SEragileaEdoInprMota.Items.Clear();
+                cb_SEragileaEdoInprMota.Visible = false;
+                Label_SistemaEdoInprMota.Visible = false;
+
+            }
+
+            // RAM MOTA EDO RESOLUZIOA AUKERAK RESETEATZEKO || RESET RAM OR RESOLUZIOA OPTIONS
+            if (cb_RMotaEdoReso.Visible == true)
+            {
+
+                cb_RMotaEdoReso.Items.Clear();
+                label_RMotaEdoReso.Visible = false;
+                cb_RMotaEdoReso.Visible = false;
+
+            }
+
+            // PUZ AUKERAK RESETEATU || RESET CPU OPTIONS
+            if (txt_Puz.Visible == true)
+            {
+
+                txt_Puz.Visible = false;
+                label_Puz.Visible = false;
+
+            }
+
+            // RAM TAMAINA AUKERAK RESETEATU || RESET RAM SIZE OPTIONS
+            if (cb_RamKantitatea.Visible == true)
+            {
+                cb_RamKantitatea.Visible = false;
+                label_RAM.Visible = false;
+            }
+
+            // WDWA
+            if (cb_MKantitatea.Visible == true)
+            {
+                cb_MKantitatea.Visible = false;
+                label_MKantitatea.Visible = false;
+            }
+
+            // WDWA
+            if (cb_Bateria.Visible == true)
+            {
+                cb_Bateria.Visible = false;
+                label_Bateria.Visible = false;
+            }
+
+
+
+        }
+
     }
 }

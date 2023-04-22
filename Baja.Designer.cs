@@ -91,6 +91,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(883, 249);
             this.dataGridView1.TabIndex = 28;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // Bidali_BT
@@ -237,7 +238,7 @@
             this.BajaEman_BT.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BajaEman_BT.ForeColor = System.Drawing.SystemColors.Control;
             this.BajaEman_BT.Location = new System.Drawing.Point(604, 89);
-            this.BajaEman_BT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BajaEman_BT.Margin = new System.Windows.Forms.Padding(2);
             this.BajaEman_BT.Name = "BajaEman_BT";
             this.BajaEman_BT.Size = new System.Drawing.Size(284, 51);
             this.BajaEman_BT.TabIndex = 119;
@@ -273,7 +274,7 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(1318, 710);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(920, 584);
             this.Name = "Baja";
