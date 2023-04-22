@@ -167,7 +167,7 @@ namespace TSB_Inbentarioa
             txt_Desc.Enabled = false;
 
             // INPRESORA || PRINTER
-            if (cb_SEragileaEdoInprMota.Visible == true)
+            /*if (cb_SEragileaEdoInprMota.Visible == true)
             {
                 // ComboBox
                 cb_SEragileaEdoInprMota.Visible = false;
@@ -179,7 +179,7 @@ namespace TSB_Inbentarioa
             else
             {
 
-            }
+            }*/
 
             
         }
