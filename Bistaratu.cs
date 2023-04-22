@@ -841,5 +841,10 @@ namespace TSB_Inbentarioa
         {
 
         }
+
+        private void HasieraDataTime_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

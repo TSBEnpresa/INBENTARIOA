@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -588,6 +589,15 @@ namespace TSB_Inbentarioa
             // GAILUAN AUKERATUTAKO BALOREA GORDE || SAVE GAILUA SELECTED ITEM
             string gailuMota = Gailua_CB.SelectedItem.ToString();
 
+            // MINTEGI ZENBAKIA GORDETZEKO || SAVE MINTEGI NUMBER
+            string mintegia = MintegiZenbakiakBueltatzen();
+
+            //data
+            DateTime erosketaData;
+
+            // KOMANDUA || COMMAND
+            MySqlCommand cmd;
+
             // DERRIGORREZKOAK DIREN DATUAK BETETA EDUKITZEKO ||
             // TO KEEP DATA THAT ARE RELATED TO EVERGREENS FULL IN EUSKERA
             if (!String.IsNullOrWhiteSpace(txt_SerieZbk.Text) && !String.IsNullOrWhiteSpace(txt_Marka.Text)
@@ -602,14 +612,130 @@ namespace TSB_Inbentarioa
                         //Inprimagailuak aukeratzerakoan beteko diren datuak | The information that it will be filled when we select inprimagailuak
                         insQuery = "INSERT INTO " + gailuMota + " " 
                                  + "(serie_zbk, marka, modeloa, mota, erosketa_data, id_mintegia, baja, deskribapen_orokorra) " +
-                                   "VALUES ()";
+                                   "VALUES (@serieZBK, @marka, @modeloa, @mota, @data, @mintegia, @baja, @desk)";
+
+                        // KOMANDUA SORTZEKO || CREATE COMMAND
+                        cmd = new MySqlCommand(insQuery, connection);
+
+                        // LORTU DATAREN BALIOA || GIVE DATA VALUE
+                        erosketaData = dtp_ErosketaData.Value.Date;
+
+                        // GAILU GUZTIAK DITUZTEN PARAMETROAK LORTU, PARAMETRO HAUEK EZIN DUTE NULL IZAN || 
+                        cmd.Parameters.AddWithValue("@serieZBK", txt_SerieZbk.Text.ToString());
+                        cmd.Parameters.AddWithValue("@marka", txt_Marka.Text.ToString());
+                        cmd.Parameters.AddWithValue("@modeloa", txt_Modeloa.Text.ToString());
+                        cmd.Parameters.AddWithValue("@data", erosketaData.ToString("yyyy-MM-dd"));
+                        cmd.Parameters.AddWithValue("@mintegia", mintegia);
+                        cmd.Parameters.AddWithValue("@baja", "Ez");
+
+                        // Deskribapena null al dan edo ez
+                        if (txt_Desc.Text != null)
+                        {
+                            cmd.Parameters.AddWithValue("@desk", txt_Desc.Text.ToString());
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@desk", null);
+                        }
+
+                        // Inprimagailu mota null al dan edo ez
+                        if (cb_SEragileaEdoInprMota.SelectedItem != null)
+                        {
+                            cmd.Parameters.AddWithValue("@mota", cb_SEragileaEdoInprMota.SelectedItem.ToString());
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@mota", null);
+                        }
+
+                        // KOMANDOA EXEKUTATU || EXECUTE INSERT COMMAND
+                        cmd.ExecuteNonQuery();
+
+
 
                         break;
 
                     case "mahaigainekoak":
 
                         //Mahaigainekoak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select mahaiganekoak
-                        
+                        insQuery = "INSERT INTO " + gailuMota + " "
+                                 + "(serie_zbk, marka, modeloa, os, puz, RAM_GB, memoria_mota, memoria_GB, erosketa_data, id_mintegia, baja, deskribapen_orokorra ) " +
+                                   "VALUES (@serieZBK, @marka, @modeloa, @os, @puz, @ramKantitatea, @ramMota, @MKantitatea, @data, @mintegia, @baja, @desk)";
+
+                        // KOMANDUA SORTZEKO || CREATE COMMAND
+                        cmd = new MySqlCommand(insQuery, connection);
+
+                        // LORTU DATAREN BALIOA || GIVE DATA VALUE
+                        erosketaData = dtp_ErosketaData.Value.Date;
+
+                        // GAILU GUZTIAK DITUZTEN PARAMETROAK LORTU, PARAMETRO HAUEK EZIN DUTE NULL IZAN || 
+                        cmd.Parameters.AddWithValue("@serieZBK", txt_SerieZbk.Text.ToString());
+                        cmd.Parameters.AddWithValue("@marka", txt_Marka.Text.ToString());
+                        cmd.Parameters.AddWithValue("@modeloa", txt_Modeloa.Text.ToString());
+                        cmd.Parameters.AddWithValue("@data", erosketaData.ToString("yyyy-MM-dd"));
+                        cmd.Parameters.AddWithValue("@mintegia", mintegia);
+                        cmd.Parameters.AddWithValue("@baja", "Ez");
+
+                        // Sistema eragilea null al dan edo ez
+                        if (cb_SEragileaEdoInprMota.SelectedItem != null)
+                        {
+                            cmd.Parameters.AddWithValue("@os", cb_SEragileaEdoInprMota.SelectedItem.ToString());
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@os", null);
+                        }
+
+                        // Prozesagailua null al dan edo ez
+                        if (txt_Puz.Text != null)
+                        {
+                            cmd.Parameters.AddWithValue("@puz", txt_Puz.Text.ToString());
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@puz", null);
+                        }
+
+                        // Ram kantitatea null al dan edo ez
+                        if (cb_RamKantitatea.SelectedItem != null)
+                        {
+                            cmd.Parameters.AddWithValue("@ramKantitatea", cb_RamKantitatea.SelectedItem.ToString());
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@ramKantitatea", null);
+                        }
+
+                        // Ram mota null al dan edo ez
+                        if (cb_RMotaEdoReso.SelectedItem != null)
+                        {
+                            cmd.Parameters.AddWithValue("@ramMota", cb_RMotaEdoReso.SelectedItem.ToString());
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@ramMota", null);
+                        }
+
+                        // Memoria kantitatea null al dan edo ez
+                        if (cb_MKantitatea.SelectedItem != null)
+                        {
+                            cmd.Parameters.AddWithValue("@MKantitatea", cb_MKantitatea.SelectedItem.ToString());
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@MKantitatea", null);
+
+                        }
+
+                        // Deskribapena null al dan edo ez
+                        if (txt_Desc.Text != null)
+                        {
+                            cmd.Parameters.AddWithValue("@desk", txt_Desc.Text.ToString());
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@desk", null);
+                        }
 
                         break;
 
@@ -642,15 +768,64 @@ namespace TSB_Inbentarioa
                         break;
                 }
 
-                string intQuery = "INSERT INTO mi_tabla (campo1, campo2, campo3) VALUES (@valor1, @valor2, @valor3)";
-                MySqlCommand command = new MySqlCommand(intQuery, connection);
-
             }
             else
             {
                 MessageBox.Show("Mesedez, gailu bati ALTA emateko, '*' duten aukerak beteta egon behar dute.");
             }
 
+
+            // KONEXIOA ITXI || CLOSE CONNECTION
+            connection.Close();
+
         }
+
+
+        private string MintegiZenbakiakBueltatzen()
+        {
+
+            string mintegiZbk = "0";
+
+            // KONEXIOA || CONNECTION
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            // KONEXIOA EZARRI || CONNECTION OPEN
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ezin izan da datu basearekin konexioa ezarri.");
+                throw;
+            }
+
+            // "id_mintegia" DENEAN, BERRIZ ZENBAKIETARA BUELTAKO DUGU || RETURN THE "id_mintegia" NUMBER
+            
+            // MINTEGIAREN ZENBAKIA LORTZEKO || GET MINTEGIA NUMBER
+            string mintegiZenbakia =
+                  "select id_mintegia from mintegitaula where izena = '" + cb_Mintegia.SelectedItem + "';";
+
+            // DATU BASETIK DATUAK BISTARATU || SHOW DATABASE DATA
+            MySqlCommand command = new MySqlCommand(mintegiZenbakia, connection);
+
+            // DATU BASETIK DATUAK IRAKURRI || READ DATABASE DATA
+            MySqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                // datuZehatza ZENBAKIRA ALDATU || CHANGE datuZehatza TO A NUMBER
+                mintegiZbk = reader.GetString(0);
+
+            }
+
+            reader.Close();
+            connection.Close();
+
+            return mintegiZbk;
+
+
+        }
+
     }
 }
