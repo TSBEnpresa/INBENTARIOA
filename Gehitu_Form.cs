@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TSB_Inbentarioa
 {
@@ -98,6 +99,8 @@ namespace TSB_Inbentarioa
             // ZERBAIT AUKERATZEN DUGUN BAKOITZEAN HASIERATIK JARRIKO DUGU || RESET "PROGRAM"
             HasieranBezalaJarri();
 
+            // GAILUA GEHITU BOTOIA AKTIBATU || ACTIVATE GAILUA GEHITU BUTTOM
+            bt_GGehitu.Enabled = true;
 
             switch (Gailua_CB.SelectedItem)
             {
@@ -558,5 +561,96 @@ namespace TSB_Inbentarioa
 
         }
 
+
+
+        private void bt_GGehitu_Click(object sender, EventArgs e)
+        {
+            // GEHITU BOTOIARI SAKATZERAKOAN GERTATUKO DENA ||
+            // WHAT IS GOING TO HAPPEN WHEN YOU PUSH "GEHITU" BUTTOM
+
+            // KONEXIOA || CONNECTION
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            // KONEXIOA EZARRI || CONNECTION OPEN
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ezin izan da datu basearekin konexioa ezarri.");
+                throw;
+            }
+
+            // INSERT QUERY
+            string insQuery = "";
+
+            // GAILUAN AUKERATUTAKO BALOREA GORDE || SAVE GAILUA SELECTED ITEM
+            string gailuMota = Gailua_CB.SelectedItem.ToString();
+
+            // DERRIGORREZKOAK DIREN DATUAK BETETA EDUKITZEKO ||
+            // TO KEEP DATA THAT ARE RELATED TO EVERGREENS FULL IN EUSKERA
+            if (!String.IsNullOrWhiteSpace(txt_SerieZbk.Text) && !String.IsNullOrWhiteSpace(txt_Marka.Text)
+                && !String.IsNullOrWhiteSpace(txt_Modeloa.Text) && cb_Mintegia.SelectedItem != null)
+            {
+                // GAILU MOTAN ARABERA || ACCORDING TO "GAILU MOTAK"
+                switch (Gailua_CB.SelectedItem)
+                {
+                    
+                    case "inprimagailuak":
+
+                        //Inprimagailuak aukeratzerakoan beteko diren datuak | The information that it will be filled when we select inprimagailuak
+                        insQuery = "INSERT INTO " + gailuMota + " " 
+                                 + "(serie_zbk, marka, modeloa, mota, erosketa_data, id_mintegia, baja, deskribapen_orokorra) " +
+                                   "VALUES ()";
+
+                        break;
+
+                    case "mahaigainekoak":
+
+                        //Mahaigainekoak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select mahaiganekoak
+                        
+
+                        break;
+
+                    case "mobilak":
+
+                        //Mobilak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select mobilak
+                        
+
+                        break;
+
+                    case "monitoreak":
+
+                        //Monitoreak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select monitoreak
+                        
+
+                        break;
+
+                    case "portatilak":
+
+                        //Portatilak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select portatilak
+                        
+
+                        break;
+
+                    case "telebistak":
+
+                        //Telebistak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select telebistak
+                        
+
+                        break;
+                }
+
+                string intQuery = "INSERT INTO mi_tabla (campo1, campo2, campo3) VALUES (@valor1, @valor2, @valor3)";
+                MySqlCommand command = new MySqlCommand(intQuery, connection);
+
+            }
+            else
+            {
+                MessageBox.Show("Mesedez, gailu bati ALTA emateko, '*' duten aukerak beteta egon behar dute.");
+            }
+
+        }
     }
 }

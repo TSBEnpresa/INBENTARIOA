@@ -245,7 +245,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pictureBox2.Location = new System.Drawing.Point(681, 15);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(184, 127);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -281,7 +281,7 @@
             this.cb_Mintegia.Font = new System.Drawing.Font("Yu Gothic UI", 12F);
             this.cb_Mintegia.IntegralHeight = false;
             this.cb_Mintegia.Location = new System.Drawing.Point(250, 240);
-            this.cb_Mintegia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_Mintegia.Margin = new System.Windows.Forms.Padding(2);
             this.cb_Mintegia.Name = "cb_Mintegia";
             this.cb_Mintegia.Size = new System.Drawing.Size(180, 29);
             this.cb_Mintegia.TabIndex = 56;
@@ -327,12 +327,13 @@
             this.bt_GGehitu.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_GGehitu.ForeColor = System.Drawing.SystemColors.Control;
             this.bt_GGehitu.Location = new System.Drawing.Point(250, 461);
-            this.bt_GGehitu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bt_GGehitu.Margin = new System.Windows.Forms.Padding(2);
             this.bt_GGehitu.Name = "bt_GGehitu";
             this.bt_GGehitu.Size = new System.Drawing.Size(401, 43);
             this.bt_GGehitu.TabIndex = 66;
             this.bt_GGehitu.Text = "GAILUA GEHITU";
             this.bt_GGehitu.UseVisualStyleBackColor = true;
+            this.bt_GGehitu.Click += new System.EventHandler(this.bt_GGehitu_Click);
             // 
             // bt_Reset
             // 
@@ -340,7 +341,7 @@
             this.bt_Reset.Enabled = false;
             this.bt_Reset.Font = new System.Drawing.Font("Yu Gothic UI", 12F);
             this.bt_Reset.Location = new System.Drawing.Point(472, 392);
-            this.bt_Reset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bt_Reset.Margin = new System.Windows.Forms.Padding(2);
             this.bt_Reset.Name = "bt_Reset";
             this.bt_Reset.Size = new System.Drawing.Size(393, 32);
             this.bt_Reset.TabIndex = 67;
@@ -363,7 +364,7 @@
             this.cb_Pantaila.Font = new System.Drawing.Font("Yu Gothic UI", 12F);
             this.cb_Pantaila.IntegralHeight = false;
             this.cb_Pantaila.Location = new System.Drawing.Point(250, 316);
-            this.cb_Pantaila.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_Pantaila.Margin = new System.Windows.Forms.Padding(2);
             this.cb_Pantaila.Name = "cb_Pantaila";
             this.cb_Pantaila.Size = new System.Drawing.Size(180, 29);
             this.cb_Pantaila.TabIndex = 57;
@@ -375,7 +376,7 @@
             this.cb_RMotaEdoReso.Font = new System.Drawing.Font("Yu Gothic UI", 12F);
             this.cb_RMotaEdoReso.IntegralHeight = false;
             this.cb_RMotaEdoReso.Location = new System.Drawing.Point(472, 240);
-            this.cb_RMotaEdoReso.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_RMotaEdoReso.Margin = new System.Windows.Forms.Padding(2);
             this.cb_RMotaEdoReso.Name = "cb_RMotaEdoReso";
             this.cb_RMotaEdoReso.Size = new System.Drawing.Size(180, 29);
             this.cb_RMotaEdoReso.TabIndex = 58;
@@ -387,7 +388,7 @@
             this.cb_SEragileaEdoInprMota.Font = new System.Drawing.Font("Yu Gothic UI", 12F);
             this.cb_SEragileaEdoInprMota.IntegralHeight = false;
             this.cb_SEragileaEdoInprMota.Location = new System.Drawing.Point(472, 166);
-            this.cb_SEragileaEdoInprMota.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_SEragileaEdoInprMota.Margin = new System.Windows.Forms.Padding(2);
             this.cb_SEragileaEdoInprMota.Name = "cb_SEragileaEdoInprMota";
             this.cb_SEragileaEdoInprMota.Size = new System.Drawing.Size(180, 29);
             this.cb_SEragileaEdoInprMota.TabIndex = 59;
@@ -407,7 +408,7 @@
             "64 GB",
             "128 GB"});
             this.cb_RamKantitatea.Location = new System.Drawing.Point(686, 166);
-            this.cb_RamKantitatea.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_RamKantitatea.Margin = new System.Windows.Forms.Padding(2);
             this.cb_RamKantitatea.Name = "cb_RamKantitatea";
             this.cb_RamKantitatea.Size = new System.Drawing.Size(180, 29);
             this.cb_RamKantitatea.TabIndex = 61;
@@ -427,7 +428,7 @@
             "512 GB",
             "1 TB"});
             this.cb_MKantitatea.Location = new System.Drawing.Point(686, 240);
-            this.cb_MKantitatea.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_MKantitatea.Margin = new System.Windows.Forms.Padding(2);
             this.cb_MKantitatea.Name = "cb_MKantitatea";
             this.cb_MKantitatea.Size = new System.Drawing.Size(180, 29);
             this.cb_MKantitatea.TabIndex = 63;
@@ -454,7 +455,7 @@
             "7000 mAh",
             "8000 mAh"});
             this.cb_Bateria.Location = new System.Drawing.Point(686, 318);
-            this.cb_Bateria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_Bateria.Margin = new System.Windows.Forms.Padding(2);
             this.cb_Bateria.Name = "cb_Bateria";
             this.cb_Bateria.Size = new System.Drawing.Size(180, 29);
             this.cb_Bateria.TabIndex = 65;
