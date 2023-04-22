@@ -37,7 +37,7 @@ namespace TSB_Inbentarioa
             // BOTOIAK EDO AUKERAK BERRABIARAZI || RESET BUTTOMS
             BotoiakBerrabiarazi();
 
-            BajaEman_BT.Enabled = false;
+            //BajaEman_BT.Enabled = false;
 
             // BISTARATZE LEIHOA GARBITU EGITEN DU || IT CLEANS THE DataGridView WINDOW
             dataGridView1.DataSource = null;
@@ -240,8 +240,22 @@ namespace TSB_Inbentarioa
 
                         }
 
-                        // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
-                        selQuery = "select * from " + gailuMota + " where baja = 'Ez' and " + datuMota + " = '" + datuZehatza + "' ;";
+
+
+                        if (datuZehatza == null || datuZehatza == "Utzak")
+                        {
+                            datuZehatza = "NULL";
+
+                            selQuery = "SELECT * FROM " + gailuMota + " WHERE baja = 'Ez' and "
+                                + datuMota + " IS " + datuZehatza + ";";
+                        }
+                        else
+                        {
+                            // DENAK BISTARATUKO DITUGU || SELECT TO DO THE QUERY
+                            selQuery = "select * from " + gailuMota + " where baja = 'Ez' and " + datuMota + " = '" + datuZehatza + "' ;";
+                        }
+
+                        
 
                         // DATUAK TAULAN SARTZEKO || INSERT THE DATA INTO THE TABLE
                         DatuakTaulanSartu(selQuery, connection);
@@ -588,6 +602,11 @@ namespace TSB_Inbentarioa
 
                         // Sartu beharreko datua || Data to be entered.
                         datuak = reader[kolumna].ToString();
+
+                        if (datuak == "")
+                        {
+                            datuak = "Utzak";
+                        }
 
                         // Combox-a bete, barruko datuak irakusteko || Fill in the combo box with the data to be shown
                         DatuZehatza_CB.Items.Add(datuak);
