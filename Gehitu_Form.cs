@@ -654,6 +654,12 @@ namespace TSB_Inbentarioa
                         TelebistakSartzen(insQuery);
 
                         break;
+
+                    default:
+
+                        MessageBox.Show("Aukeratutakoa ez dago zuzena, mesedez berriro saiatu");
+
+                        break;
                 }
 
             }
@@ -661,6 +667,20 @@ namespace TSB_Inbentarioa
             {
                 MessageBox.Show("Mesedez, gailu bati ALTA emateko, '*' duten aukerak beteta egon behar dute.");
             }
+
+            // BETETAKO DATUAK BERRABIARAZI || RESET DATA
+            HasieranBezalaJarri();
+
+            // GEHITU BOTOIA SAKATZERAKOAN RESETEATU AUKERAK || WHEN WE "CLICK" ON THE "GEHITU" BUTTON, IT WILL RESTART
+            Gailua_CB.SelectedItem = null;
+            txt_SerieZbk.Enabled = false;
+            txt_Marka.Enabled = false;
+            txt_Modeloa.Enabled = false;
+            txt_Desc.Enabled = false;
+            dtp_ErosketaData.Enabled = false;
+            cb_Mintegia.Enabled = false;
+            bt_Reset.Enabled = false;
+            bt_GGehitu.Enabled = false;
 
 
             // KONEXIOA ITXI || CLOSE CONNECTION

@@ -140,3 +140,7 @@ H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Progra
 H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.GailuaGehitu_Form.resources
 H:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.WebOrria_Form.resources
 D:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.GailuaGehitu_Form.resources
+D:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\TSB_Inbentarioa.exe.manifest
+D:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\TSB_Inbentarioa.application
+D:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.exe.manifest
+D:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.application

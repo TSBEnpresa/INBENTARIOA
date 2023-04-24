@@ -38,7 +38,7 @@ namespace TSB_Inbentarioa
         {
 
             // ERABILTZAILEEN PASAHITZA || USER PASSWORD
-            string adminPSW = ""; string langilePSW = "langilea";
+            string adminPSW = "admin"; string langilePSW = "langilea";
 
             // SARTUTAKO ERABILTZAILEA ETA PASAHITZA GORDETZEKO || SAVE THE PASSWORD
             string erabiltzailea = ""; string pasahitza = "";
