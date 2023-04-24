@@ -54,18 +54,20 @@
             // 
             this.GEgoera_txt.AutoSize = true;
             this.GEgoera_txt.Font = new System.Drawing.Font("Yu Gothic UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GEgoera_txt.Location = new System.Drawing.Point(335, 21);
+            this.GEgoera_txt.Location = new System.Drawing.Point(447, 26);
+            this.GEgoera_txt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.GEgoera_txt.Name = "GEgoera_txt";
-            this.GEgoera_txt.Size = new System.Drawing.Size(202, 32);
+            this.GEgoera_txt.Size = new System.Drawing.Size(257, 41);
             this.GEgoera_txt.TabIndex = 18;
             this.GEgoera_txt.Text = "GAILUEN EGOERA";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(20, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(27, 26);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(36, 33);
+            this.pictureBox1.Size = new System.Drawing.Size(48, 41);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 27;
             this.pictureBox1.TabStop = false;
@@ -83,13 +85,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 280);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 345);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(883, 249);
+            this.dataGridView1.Size = new System.Drawing.Size(1175, 296);
             this.dataGridView1.TabIndex = 28;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
@@ -97,9 +100,10 @@
             // Bidali_BT
             // 
             this.Bidali_BT.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Bidali_BT.Location = new System.Drawing.Point(604, 156);
+            this.Bidali_BT.Location = new System.Drawing.Point(805, 192);
+            this.Bidali_BT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Bidali_BT.Name = "Bidali_BT";
-            this.Bidali_BT.Size = new System.Drawing.Size(140, 51);
+            this.Bidali_BT.Size = new System.Drawing.Size(187, 63);
             this.Bidali_BT.TabIndex = 103;
             this.Bidali_BT.Text = "BISTARATU";
             this.Bidali_BT.UseVisualStyleBackColor = true;
@@ -111,9 +115,10 @@
             this.kolumnak_CB.Enabled = false;
             this.kolumnak_CB.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kolumnak_CB.FormattingEnabled = true;
-            this.kolumnak_CB.Location = new System.Drawing.Point(80, 149);
+            this.kolumnak_CB.Location = new System.Drawing.Point(107, 183);
+            this.kolumnak_CB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.kolumnak_CB.Name = "kolumnak_CB";
-            this.kolumnak_CB.Size = new System.Drawing.Size(151, 29);
+            this.kolumnak_CB.Size = new System.Drawing.Size(200, 36);
             this.kolumnak_CB.TabIndex = 106;
             this.kolumnak_CB.SelectedIndexChanged += new System.EventHandler(this.Kolumnak_CB_SelectedIndexChanged);
             // 
@@ -122,9 +127,10 @@
             this.Gailua_CB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Gailua_CB.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Gailua_CB.FormattingEnabled = true;
-            this.Gailua_CB.Location = new System.Drawing.Point(79, 87);
+            this.Gailua_CB.Location = new System.Drawing.Point(105, 107);
+            this.Gailua_CB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Gailua_CB.Name = "Gailua_CB";
-            this.Gailua_CB.Size = new System.Drawing.Size(152, 29);
+            this.Gailua_CB.Size = new System.Drawing.Size(201, 36);
             this.Gailua_CB.TabIndex = 104;
             this.Gailua_CB.SelectedIndexChanged += new System.EventHandler(this.Gailua_CB_SelectedIndexChanged);
             // 
@@ -134,9 +140,10 @@
             this.DatuZehatza_CB.Enabled = false;
             this.DatuZehatza_CB.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DatuZehatza_CB.FormattingEnabled = true;
-            this.DatuZehatza_CB.Location = new System.Drawing.Point(79, 210);
+            this.DatuZehatza_CB.Location = new System.Drawing.Point(105, 258);
+            this.DatuZehatza_CB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DatuZehatza_CB.Name = "DatuZehatza_CB";
-            this.DatuZehatza_CB.Size = new System.Drawing.Size(152, 29);
+            this.DatuZehatza_CB.Size = new System.Drawing.Size(201, 36);
             this.DatuZehatza_CB.TabIndex = 107;
             this.DatuZehatza_CB.SelectedIndexChanged += new System.EventHandler(this.DatuZehatza_CB_SelectedIndexChanged);
             // 
@@ -144,27 +151,30 @@
             // 
             this.HasieraDataTime.CalendarFont = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HasieraDataTime.Enabled = false;
-            this.HasieraDataTime.Location = new System.Drawing.Point(315, 87);
+            this.HasieraDataTime.Location = new System.Drawing.Point(420, 107);
+            this.HasieraDataTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.HasieraDataTime.Name = "HasieraDataTime";
-            this.HasieraDataTime.Size = new System.Drawing.Size(199, 20);
+            this.HasieraDataTime.Size = new System.Drawing.Size(264, 22);
             this.HasieraDataTime.TabIndex = 108;
             // 
             // BukaeraDataTime
             // 
             this.BukaeraDataTime.CalendarFont = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BukaeraDataTime.Enabled = false;
-            this.BukaeraDataTime.Location = new System.Drawing.Point(315, 143);
+            this.BukaeraDataTime.Location = new System.Drawing.Point(420, 176);
+            this.BukaeraDataTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BukaeraDataTime.Name = "BukaeraDataTime";
-            this.BukaeraDataTime.Size = new System.Drawing.Size(199, 20);
+            this.BukaeraDataTime.Size = new System.Drawing.Size(264, 22);
             this.BukaeraDataTime.TabIndex = 109;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(83, 71);
+            this.label2.Location = new System.Drawing.Point(111, 87);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.Size = new System.Drawing.Size(84, 19);
             this.label2.TabIndex = 110;
             this.label2.Text = "Gailu Motak";
             // 
@@ -172,9 +182,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(84, 132);
+            this.label3.Location = new System.Drawing.Point(112, 162);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.Size = new System.Drawing.Size(83, 19);
             this.label3.TabIndex = 111;
             this.label3.Text = "Datu Motak";
             // 
@@ -182,9 +193,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(83, 192);
+            this.label4.Location = new System.Drawing.Point(111, 236);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 13);
+            this.label4.Size = new System.Drawing.Size(98, 19);
             this.label4.TabIndex = 112;
             this.label4.Text = "Datu Zehatzak";
             // 
@@ -192,9 +204,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(320, 68);
+            this.label5.Location = new System.Drawing.Point(427, 84);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 13);
+            this.label5.Size = new System.Drawing.Size(87, 19);
             this.label5.TabIndex = 113;
             this.label5.Text = "Hasiera Data";
             // 
@@ -202,9 +215,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(320, 124);
+            this.label6.Location = new System.Drawing.Point(427, 153);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 13);
+            this.label6.Size = new System.Drawing.Size(91, 19);
             this.label6.TabIndex = 114;
             this.label6.Text = "Bukaera Data";
             // 
@@ -212,19 +226,19 @@
             // 
             this.ZKop_TXT.AutoSize = true;
             this.ZKop_TXT.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ZKop_TXT.Location = new System.Drawing.Point(9, 258);
-            this.ZKop_TXT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ZKop_TXT.Location = new System.Drawing.Point(12, 318);
             this.ZKop_TXT.Name = "ZKop_TXT";
-            this.ZKop_TXT.Size = new System.Drawing.Size(141, 19);
+            this.ZKop_TXT.Size = new System.Drawing.Size(171, 23);
             this.ZKop_TXT.TabIndex = 118;
             this.ZKop_TXT.Text = "ZUTABE KOPURUA: 0";
             // 
             // Reset_BT
             // 
             this.Reset_BT.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Reset_BT.Location = new System.Drawing.Point(748, 156);
+            this.Reset_BT.Location = new System.Drawing.Point(997, 192);
+            this.Reset_BT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Reset_BT.Name = "Reset_BT";
-            this.Reset_BT.Size = new System.Drawing.Size(140, 51);
+            this.Reset_BT.Size = new System.Drawing.Size(187, 63);
             this.Reset_BT.TabIndex = 105;
             this.Reset_BT.Text = "RESET";
             this.Reset_BT.UseVisualStyleBackColor = true;
@@ -237,10 +251,10 @@
             this.BajaEman_BT.Enabled = false;
             this.BajaEman_BT.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BajaEman_BT.ForeColor = System.Drawing.SystemColors.Control;
-            this.BajaEman_BT.Location = new System.Drawing.Point(604, 89);
-            this.BajaEman_BT.Margin = new System.Windows.Forms.Padding(2);
+            this.BajaEman_BT.Location = new System.Drawing.Point(805, 110);
+            this.BajaEman_BT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BajaEman_BT.Name = "BajaEman_BT";
-            this.BajaEman_BT.Size = new System.Drawing.Size(284, 51);
+            this.BajaEman_BT.Size = new System.Drawing.Size(379, 63);
             this.BajaEman_BT.TabIndex = 119;
             this.BajaEman_BT.Text = "BAJA EMAN";
             this.BajaEman_BT.UseVisualStyleBackColor = false;
@@ -248,12 +262,12 @@
             // 
             // Baja
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(904, 545);
+            this.ClientSize = new System.Drawing.Size(1203, 661);
             this.Controls.Add(this.BajaEman_BT);
             this.Controls.Add(this.ZKop_TXT);
             this.Controls.Add(this.Reset_BT);
@@ -274,9 +288,9 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(1318, 710);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(920, 584);
+            this.MinimumSize = new System.Drawing.Size(1221, 708);
             this.Name = "Baja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TSB INBENTARIOA | Gailuen Baja";

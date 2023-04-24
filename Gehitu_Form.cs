@@ -110,7 +110,7 @@ namespace TSB_Inbentarioa
                 case "inprimagailuak":
 
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
-                    pictureBox2.Image = Image.FromFile("../../Diseinua/GailuMotak/Inprimagailua.png");
+                    pictureBox2.Image = Image.FromFile("../../Diseinua/Inprimagailua.png");
 
                     // INPRIMAGAILUAK BEHAR DITUEN BOTOIAK AKTIBATU ||  ENABLE PRINTER BUTTONS
                     InprimagailuOpzioak();
@@ -120,7 +120,7 @@ namespace TSB_Inbentarioa
                 case "mahaigainekoak":
 
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
-                    pictureBox2.Image = Image.FromFile("../../Diseinua/GailuMotak/Mahaigainekoak.png");
+                    pictureBox2.Image = Image.FromFile("../../Diseinua/Mahaigainekoak.png");
 
                     // MAHAIGAINEKOAK BEHAR DITUEN BOTOIAK AKTIBATU || ENABLE PC BUTTONS
                     MahaigainekoOpzioak();
@@ -132,6 +132,7 @@ namespace TSB_Inbentarioa
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
                     pictureBox2.Image = Image.FromFile("../../Diseinua/GailuMotak/Mobilak.png");
 
+                    // MOBILAK BEHAR DITUEN BOTOIAK AKTIBATU || ENABLE PC BUTTONS
                     MobilaOpzioak();
 
                     break;
@@ -139,8 +140,9 @@ namespace TSB_Inbentarioa
                 case "monitoreak":
 
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
-                    pictureBox2.Image = Image.FromFile("../../Diseinua/GailuMotak/Monitorea.png");
+                    pictureBox2.Image = Image.FromFile("../../Diseinua/Monitorea.png");
 
+                    // MONITOREAK BEHAR DITUEN BOTOIAK AKTIBATU || ENABLE PC BUTTONS
                     MonitorOpzioak();
 
                     break;
@@ -148,8 +150,9 @@ namespace TSB_Inbentarioa
                 case "portatilak":
 
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
-                    pictureBox2.Image = Image.FromFile("../../Diseinua/GailuMotak/Portatila.png");
+                    pictureBox2.Image = Image.FromFile("../../Diseinua/Portatila.png");
 
+                    // PORTATIL BEHAR DITUEN BOTOIAK AKTIBATU || ENABLE PC BUTTONS
                     PortatilOpzioak();
 
                     break;
@@ -157,8 +160,9 @@ namespace TSB_Inbentarioa
                 case "telebistak":
 
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
-                    pictureBox2.Image = Image.FromFile("../../Diseinua/GailuMotak/Telebista.png");
+                    pictureBox2.Image = Image.FromFile("../../Diseinua/Telebista.png");
 
+                    // TELEBISTA BEHAR DITUEN BOTOIAK AKTIBATU || ENABLE PC BUTTONS
                     TelebistaOpzioak();
 
                     break;
@@ -662,25 +666,28 @@ namespace TSB_Inbentarioa
                         break;
                 }
 
+
+                // BETETAKO DATUAK BERRABIARAZI || RESET DATA
+                HasieranBezalaJarri();
+
+                // GEHITU BOTOIA SAKATZERAKOAN RESETEATU AUKERAK || WHEN WE "CLICK" ON THE "GEHITU" BUTTON, IT WILL RESTART
+                Gailua_CB.SelectedItem = null;
+                txt_SerieZbk.Enabled = false;
+                txt_Marka.Enabled = false;
+                txt_Modeloa.Enabled = false;
+                txt_Desc.Enabled = false;
+                dtp_ErosketaData.Enabled = false;
+                cb_Mintegia.Enabled = false;
+                bt_Reset.Enabled = false;
+                bt_GGehitu.Enabled = false;
+
+                MessageBox.Show("Gailua gehitu da.");
+
             }
             else
             {
                 MessageBox.Show("Mesedez, gailu bati ALTA emateko, '*' duten aukerak beteta egon behar dute.");
             }
-
-            // BETETAKO DATUAK BERRABIARAZI || RESET DATA
-            HasieranBezalaJarri();
-
-            // GEHITU BOTOIA SAKATZERAKOAN RESETEATU AUKERAK || WHEN WE "CLICK" ON THE "GEHITU" BUTTON, IT WILL RESTART
-            Gailua_CB.SelectedItem = null;
-            txt_SerieZbk.Enabled = false;
-            txt_Marka.Enabled = false;
-            txt_Modeloa.Enabled = false;
-            txt_Desc.Enabled = false;
-            dtp_ErosketaData.Enabled = false;
-            cb_Mintegia.Enabled = false;
-            bt_Reset.Enabled = false;
-            bt_GGehitu.Enabled = false;
 
 
             // KONEXIOA ITXI || CLOSE CONNECTION
@@ -915,7 +922,7 @@ namespace TSB_Inbentarioa
             }
             else
             {
-                cmd.Parameters.AddWithValue("@puz", txt_Puz.Text.ToString());
+                cmd.Parameters.AddWithValue("@puz", null);
             }
 
             // Ram mota null al dan edo ez

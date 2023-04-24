@@ -721,6 +721,8 @@ namespace TSB_Inbentarioa
 
                 //Zutabean "Bai" balorea jartzen du || In the row it puts the value "Bai"
                 rowSelect.Cells["baja"].Value = "Bai";
+
+                MessageBox.Show("Gailua baja eman da.");
             }
             catch (Exception)
             {
