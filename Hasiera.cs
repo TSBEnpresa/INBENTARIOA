@@ -15,7 +15,7 @@ namespace TSB_Inbentarioa
     {
 
         // KONEXIORAKO ERABILIKO DUGUN STRING-A || CONNECTION STRING
-        static string connectionString = "Server=localhost;Database=tsb_datubasea;Uid=root;Pwd=lanchajim;";
+        static string connectionString = "Server=192.168.119.139;Database=tsb_datubasea;Uid=tsb;Pwd=Ander123;";
 
         public Hasiera_Form()
         {
