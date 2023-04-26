@@ -110,7 +110,7 @@ namespace TSB_Inbentarioa
                 case "inprimagailuak":
 
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
-                    pictureBox2.Image = Image.FromFile("../../Diseinua/Inprimagailua.png");
+                    pictureBox2.Image = Image.FromFile("Diseinua/Inprimagailua.png");
 
                     // INPRIMAGAILUAK BEHAR DITUEN BOTOIAK AKTIBATU ||  ENABLE PRINTER BUTTONS
                     InprimagailuOpzioak();
@@ -120,7 +120,7 @@ namespace TSB_Inbentarioa
                 case "mahaigainekoak":
 
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
-                    pictureBox2.Image = Image.FromFile("../../Diseinua/Mahaigainekoak.png");
+                    pictureBox2.Image = Image.FromFile("Diseinua/Mahaigainekoak.png");
 
                     // MAHAIGAINEKOAK BEHAR DITUEN BOTOIAK AKTIBATU || ENABLE PC BUTTONS
                     MahaigainekoOpzioak();
@@ -130,7 +130,7 @@ namespace TSB_Inbentarioa
                 case "mobilak":
 
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
-                    pictureBox2.Image = Image.FromFile("../../Diseinua/GailuMotak/Mobilak.png");
+                    pictureBox2.Image = Image.FromFile("Diseinua/Mobilak.png");
 
                     // MOBILAK BEHAR DITUEN BOTOIAK AKTIBATU || ENABLE PC BUTTONS
                     MobilaOpzioak();
@@ -140,7 +140,7 @@ namespace TSB_Inbentarioa
                 case "monitoreak":
 
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
-                    pictureBox2.Image = Image.FromFile("../../Diseinua/Monitorea.png");
+                    pictureBox2.Image = Image.FromFile("Diseinua/Monitorea.png");
 
                     // MONITOREAK BEHAR DITUEN BOTOIAK AKTIBATU || ENABLE PC BUTTONS
                     MonitorOpzioak();
@@ -150,7 +150,7 @@ namespace TSB_Inbentarioa
                 case "portatilak":
 
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
-                    pictureBox2.Image = Image.FromFile("../../Diseinua/Portatila.png");
+                    pictureBox2.Image = Image.FromFile("Diseinua/Portatila.png");
 
                     // PORTATIL BEHAR DITUEN BOTOIAK AKTIBATU || ENABLE PC BUTTONS
                     PortatilOpzioak();
@@ -160,7 +160,7 @@ namespace TSB_Inbentarioa
                 case "telebistak":
 
                     // INPRIMAGAILUAREN IRUDIA KARGATU || LOAD THE PRINTER IMAGE
-                    pictureBox2.Image = Image.FromFile("../../Diseinua/Telebista.png");
+                    pictureBox2.Image = Image.FromFile("Diseinua/Telebista.png");
 
                     // TELEBISTA BEHAR DITUEN BOTOIAK AKTIBATU || ENABLE PC BUTTONS
                     TelebistaOpzioak();
@@ -447,9 +447,6 @@ namespace TSB_Inbentarioa
 
         }
 
-
-
-
         private void txt_SerieZbk_TextChanged(object sender, EventArgs e)
         {
 
@@ -583,112 +580,117 @@ namespace TSB_Inbentarioa
 
             // GAILUAN AUKERATUTAKO BALOREA GORDE || SAVE GAILUA SELECTED ITEM
             string gailuMota = Gailua_CB.SelectedItem.ToString();
-
-            // DERRIGORREZKOAK DIREN DATUAK BETETA EDUKITZEKO ||
-            // TO KEEP DATA THAT ARE RELATED TO EVERGREENS FULL IN EUSKERA
-            if (!String.IsNullOrWhiteSpace(txt_SerieZbk.Text) && !String.IsNullOrWhiteSpace(txt_Marka.Text)
-                && !String.IsNullOrWhiteSpace(txt_Modeloa.Text) && cb_Mintegia.SelectedItem != null)
+            if (txt_Desc.Text.Length > 100 || txt_Marka.Text.Length > 25 || txt_Modeloa.Text.Length > 25 || txt_Puz.Text.Length > 25 || txt_SerieZbk.Text.Length > 25)
             {
-                // GAILU MOTAN ARABERA || ACCORDING TO "GAILU MOTAK"
-                switch (Gailua_CB.SelectedItem)
-                {
-                    
-                    case "inprimagailuak":
-
-                        // Inprimagailuak aukeratzerakoan beteko diren datuak | The information that it will be filled when we select inprimagailuak
-                        insQuery = "INSERT INTO " + gailuMota + " " 
-                                 + "(serie_zbk, marka, modeloa, mota, erosketa_data, id_mintegia, baja, deskribapen_orokorra) " +
-                                   "VALUES (@serieZBK, @marka, @modeloa, @mota, @data, @mintegia, @baja, @desk)";
-
-                        InprimagailuakSartzen(insQuery);
-                        
-                        break;
-
-                    case "mahaigainekoak":
-
-                        // Mahaigainekoak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select mahaiganekoak
-                        insQuery = "INSERT INTO " + gailuMota + " "
-                                 + "(serie_zbk, marka, modeloa, sistema, prozesadorea, RAM_GB, RAM_Mota, memoria_GB, erosketa_data, id_mintegia, baja, deskribapen_orokorra ) " +
-                                   "VALUES (@serieZBK, @marka, @modeloa, @os, @puz, @ramKantitatea, @ramMota, @MKantitatea, @data, @mintegia, @baja, @desk)";
-
-                        MahaigainekoakSartzen(insQuery);
-
-                        break;
-
-                    case "mobilak":
-
-                        // Mobilak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select mobilak
-                        insQuery = "INSERT INTO " + gailuMota + " "
-                                 + "(serie_zbk, marka, modeloa, sistema, pantaila_pulgada, erosketa_data, prozesadorea, RAM_GB, memoria_GB, bateria_mAh, id_mintegia, baja, deskribapen_orokorra ) " +
-                                   "VALUES (@serieZBK, @marka, @modeloa, @os, @pantaila, @data, @puz, @ramMota, @MKantitatea, @bateria, @mintegia, @baja, @desk)";
-
-                        MobilakSartzen(insQuery);
-
-                        break;
-
-                    case "monitoreak":
-
-                        //Monitoreak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select monitoreak
-                        insQuery = "INSERT INTO " + gailuMota + " "
-                                   + "(serie_zbk, marka, modeloa, pantaila_pulgada, erosketa_data, id_mintegia, baja, deskribapen_orokorra) " + 
-                                    "VALUES (@serieZBK, @marka, @modeloa, @pantaila, @data, @mintegia, @baja, @desk);";
-
-                        MonitoreakSartzen(insQuery);
-
-                        break;
-
-                    case "portatilak":
-
-                        //Portatilak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select portatilak
-                        insQuery = "INSERT INTO " + gailuMota + " "
-                                  + "(serie_zbk, marka, modeloa, sistema, pantaila_pulgada, prozesadorea, RAM_GB, RAM_Mota, memoria_GB, erosketa_data, id_mintegia, baja, deskribapen_orokorra)" +
-                                    "VALUES (@serieZBK, @marka, @modeloa, @sistema, @pantaila, @puz, @ramKantitatea, @ramMota, @MKantitatea, @data, @mintegia, @baja, @desk);";
-
-                        PortatilakSartzen(insQuery);
-
-                        break;
-
-                    case "telebistak":
-
-                        //Telebistak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select telebistak
-                        insQuery = "INSERT INTO " + gailuMota + " "
-                            + "(serie_zbk, marka, modeloa, sistema, pantaila_pulgada, resoluzioa, erosketa_data, id_mintegia, baja, deskribapen_orokorra) " +
-                              "VALUES (@serieZBK, @marka, @modeloa, @sistema, @pantaila, @resoluzioa, @data, @mintegia, @baja, @desk);";
-
-                        TelebistakSartzen(insQuery);
-
-                        break;
-
-                    default:
-
-                        MessageBox.Show("Aukeratutakoa ez dago zuzena, mesedez berriro saiatu");
-
-                        break;
-                }
-
-
-                // BETETAKO DATUAK BERRABIARAZI || RESET DATA
-                HasieranBezalaJarri();
-
-                // GEHITU BOTOIA SAKATZERAKOAN RESETEATU AUKERAK || WHEN WE "CLICK" ON THE "GEHITU" BUTTON, IT WILL RESTART
-                Gailua_CB.SelectedItem = null;
-                txt_SerieZbk.Enabled = false;
-                txt_Marka.Enabled = false;
-                txt_Modeloa.Enabled = false;
-                txt_Desc.Enabled = false;
-                dtp_ErosketaData.Enabled = false;
-                cb_Mintegia.Enabled = false;
-                bt_Reset.Enabled = false;
-                bt_GGehitu.Enabled = false;
-
-                MessageBox.Show("Gailua gehitu da.");
-
+                MessageBox.Show("Textua oso luzea da, mesedez, saiatu berriro.");
             }
             else
             {
-                MessageBox.Show("Mesedez, gailu bati ALTA emateko, '*' duten aukerak beteta egon behar dute.");
-            }
+                // DERRIGORREZKOAK DIREN DATUAK BETETA EDUKITZEKO ||
+                // TO KEEP DATA THAT ARE RELATED TO EVERGREENS FULL IN EUSKERA
+                if (!String.IsNullOrWhiteSpace(txt_SerieZbk.Text) && !String.IsNullOrWhiteSpace(txt_Marka.Text)
+                    && !String.IsNullOrWhiteSpace(txt_Modeloa.Text) && cb_Mintegia.SelectedItem != null)
+                {
+                    // GAILU MOTAN ARABERA || ACCORDING TO "GAILU MOTAK"
+                    switch (Gailua_CB.SelectedItem)
+                    {
 
+                        case "inprimagailuak":
+
+                            // Inprimagailuak aukeratzerakoan beteko diren datuak | The information that it will be filled when we select inprimagailuak
+                            insQuery = "INSERT INTO " + gailuMota + " "
+                                     + "(serie_zbk, marka, modeloa, mota, erosketa_data, id_mintegia, baja, deskribapen_orokorra) " +
+                                       "VALUES (@serieZBK, @marka, @modeloa, @mota, @data, @mintegia, @baja, @desk)";
+
+                            InprimagailuakSartzen(insQuery);
+
+                            break;
+
+                        case "mahaigainekoak":
+
+                            // Mahaigainekoak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select mahaiganekoak
+                            insQuery = "INSERT INTO " + gailuMota + " "
+                                     + "(serie_zbk, marka, modeloa, sistema, prozesadorea, RAM_GB, RAM_Mota, memoria_GB, erosketa_data, id_mintegia, baja, deskribapen_orokorra ) " +
+                                       "VALUES (@serieZBK, @marka, @modeloa, @os, @puz, @ramKantitatea, @ramMota, @MKantitatea, @data, @mintegia, @baja, @desk)";
+
+                            MahaigainekoakSartzen(insQuery);
+
+                            break;
+
+                        case "mobilak":
+
+                            // Mobilak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select mobilak
+                            insQuery = "INSERT INTO " + gailuMota + " "
+                                     + "(serie_zbk, marka, modeloa, sistema, pantaila_pulgada, erosketa_data, prozesadorea, RAM_GB, memoria_GB, bateria_mAh, id_mintegia, baja, deskribapen_orokorra ) " +
+                                       "VALUES (@serieZBK, @marka, @modeloa, @os, @pantaila, @data, @puz, @ramMota, @MKantitatea, @bateria, @mintegia, @baja, @desk)";
+
+                            MobilakSartzen(insQuery);
+
+                            break;
+
+                        case "monitoreak":
+
+                            //Monitoreak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select monitoreak
+                            insQuery = "INSERT INTO " + gailuMota + " "
+                                       + "(serie_zbk, marka, modeloa, pantaila_pulgada, erosketa_data, id_mintegia, baja, deskribapen_orokorra) " +
+                                        "VALUES (@serieZBK, @marka, @modeloa, @pantaila, @data, @mintegia, @baja, @desk);";
+
+                            MonitoreakSartzen(insQuery);
+
+                            break;
+
+                        case "portatilak":
+
+                            //Portatilak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select portatilak
+                            insQuery = "INSERT INTO " + gailuMota + " "
+                                      + "(serie_zbk, marka, modeloa, sistema, pantaila_pulgada, prozesadorea, RAM_GB, RAM_Mota, memoria_GB, erosketa_data, id_mintegia, baja, deskribapen_orokorra)" +
+                                        "VALUES (@serieZBK, @marka, @modeloa, @sistema, @pantaila, @puz, @ramKantitatea, @ramMota, @MKantitatea, @data, @mintegia, @baja, @desk);";
+
+                            PortatilakSartzen(insQuery);
+
+                            break;
+
+                        case "telebistak":
+
+                            //Telebistak aukeratzerakoan beteko diren datuak. | The information that it will be filled when we select telebistak
+                            insQuery = "INSERT INTO " + gailuMota + " "
+                                + "(serie_zbk, marka, modeloa, sistema, pantaila_pulgada, resoluzioa, erosketa_data, id_mintegia, baja, deskribapen_orokorra) " +
+                                  "VALUES (@serieZBK, @marka, @modeloa, @sistema, @pantaila, @resoluzioa, @data, @mintegia, @baja, @desk);";
+
+                            TelebistakSartzen(insQuery);
+
+                            break;
+
+                        default:
+
+                            MessageBox.Show("Aukeratutakoa ez dago zuzena, mesedez berriro saiatu");
+
+                            break;
+                    }
+
+
+                    // BETETAKO DATUAK BERRABIARAZI || RESET DATA
+                    HasieranBezalaJarri();
+
+                    // GEHITU BOTOIA SAKATZERAKOAN RESETEATU AUKERAK || WHEN WE "CLICK" ON THE "GEHITU" BUTTON, IT WILL RESTART
+                    Gailua_CB.SelectedItem = null;
+                    txt_SerieZbk.Enabled = false;
+                    txt_Marka.Enabled = false;
+                    txt_Modeloa.Enabled = false;
+                    txt_Desc.Enabled = false;
+                    dtp_ErosketaData.Enabled = false;
+                    cb_Mintegia.Enabled = false;
+                    bt_Reset.Enabled = false;
+                    bt_GGehitu.Enabled = false;
+
+                    MessageBox.Show("Gailua gehitu da.");
+
+                }
+                else
+                {
+                    MessageBox.Show("Mesedez, gailu bati ALTA emateko, '*' duten aukerak beteta egon behar dute.");
+                }
+            }
 
             // KONEXIOA ITXI || CLOSE CONNECTION
             connection.Close();

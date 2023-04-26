@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\ikaltamirapaag1\Desktop\TSBInbentarioa\</PublishUrl>
+    <PublishUrl>C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Desktop\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -213,7 +213,18 @@
     <Content Include="Diseinua\Atzera.png" />
     <Content Include="Diseinua\FondoKolorea.png" />
     <Content Include="Diseinua\HASIERA.png" />
-    <EmbeddedResource Include="Diseinua\Inprimagailua.png" />
+    <None Include="Resources\Portatila.png" />
+    <None Include="Resources\Monitorea.png" />
+    <None Include="Resources\Mobilak.png" />
+    <None Include="Resources\Mahaigainekoak.png" />
+    <None Include="Resources\LANDER.png" />
+    <None Include="Resources\Inprimagailua.png" />
+    <None Include="Resources\HASIERA.png" />
+    <None Include="Resources\FondoKolorea.png" />
+    <None Include="Resources\Atzera.png" />
+    <None Include="Resources\Ander.png" />
+    <None Include="Resources\Telebista.png" />
+    <Content Include="Diseinua\Inprimagailua.png" />
     <Content Include="Diseinua\LANDER.png" />
     <Content Include="Diseinua\Mahaigainekoak.png" />
     <Content Include="Diseinua\Mobilak.png" />

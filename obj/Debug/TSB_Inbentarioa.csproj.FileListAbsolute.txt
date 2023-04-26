@@ -144,3 +144,8 @@ D:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Progra
 D:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\bin\Debug\TSB_Inbentarioa.application
 D:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.exe.manifest
 D:\Lanak Izarraitz\0 - ERRONKAK\7 - ERRONKA\9. Exekuzioa\TSB - Inbentario_Programa\INBENTARIOA\obj\Debug\TSB_Inbentarioa.application
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\TSB_Inbentarioa.exe.manifest
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\bin\Debug\TSB_Inbentarioa.application
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.GailuaGehitu_Form.resources
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.exe.manifest
+C:\Users\IKALTAMIRAPAAG1.ALTAMIRA\Documents\GitHub\INBENTARIOA\obj\Debug\TSB_Inbentarioa.application
